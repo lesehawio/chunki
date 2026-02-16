@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English Starter Test</title>
+
+<style>
+:root{
+  --bg:#0e1117;
+  --card:#161b26;
+  --text:#eee;
+  --accent:#00ffcc;
+  --accent2:#00ff88;
+  --glass:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.15);
+}
+
+.light{
+  --bg:#f2f2f7;
+  --card:#ffffff;
+  --text:#222;
+  --accent:#0077ff;
+  --accent2:#00bbff;
+  --glass:rgba(255,255,255,0.5);
+  --border:rgba(0,0,0,0.1);
+}
+
+body{
+  margin:0;
+  font-family:Segoe UI, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  transition:.4s;
+}
+
+.container{
+  width:390px;
+  background:var(--card);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 0 40px rgba(0,0,0,.4);
+  position:relative;
+  overflow:hidden;
+}
+
+/* LOGO */
+.logo{
+  width:120px;
+  display:block;
+  margin:0 auto 10px;
+  animation:float 3s ease-in-out infinite;
+  cursor:pointer;
+}
+@keyframes float{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+  100%{ transform:translateY(0); }
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-size:22px;
+  cursor:pointer;
+  user-select:none;
+}
+
+/* PROGRESS BAR */
+.progress-wrap{
+  width:100%;
+  height:10px;
+  background:#3335;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  transition:.4s;
+}
+
+/* TEXTS */
+h2{
+  text-align:center;
+  margin-bottom:8px;
+}
+.word{
+  text-align:center;
+  font-size:26px;
+  letter-spacing:3px;
+  margin:10px 0;
+  color:var(--accent);
+}
+.instruction{
+  text-align:center;
+  opacity:.8;
+}
+
+/* LETTERS */
+.answer-box{
+  min-height:50px;
+  border:2px dashed var(--border);
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin:16px 0;
+  padding:10px;
+}
+.letters{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+.letter{
+  background:#2d334a;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  user-select:none;
+  transition:.2s;
+  font-size:18px;
+}
+.light .letter{
+  background:#d0d4e4;
+  color:#000;
+}
+.letter:hover{
+  transform:scale(1.15) rotate(3deg);
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent2);
+  color:#000;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+button:hover{
+  transform:scale(1.03);
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  animation:fade .3s;
+}
+@keyframes fade{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+.popup-content{
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  padding:22px;
+  border-radius:16px;
+  width:330px;
+  text-align:center;
+  border:1px solid var(--border);
+  animation:pop .35s ease;
+}
+@keyframes pop{
+  0%{ transform:scale(.6); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
+}
+
+.correct{color:#00ff88;}
+.wrong{color:#ff7a00;}
+
+/* MISTAKES */
+.mistakes-title{
+  font-size:18px;
+  font-weight:bold;
+  margin-top:20px;
+  margin-bottom:10px;
+  color:var(--accent);
+  text-align:center;
+}
+.mistake-card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:12px;
+  margin-bottom:12px;
+  backdrop-filter:blur(10px);
+  font-size:14px;
+}
+.mistake-card b{
+  color:var(--accent2);
+  font-size:16px;
+}
+.mistake-label{
+  font-weight:bold;
+  color:var(--accent);
+}
+.mistake-user{
+  color:#ff7a00;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <img src="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png" class="logo" id="logo">
+
+  <div class="theme-btn" id="themeBtn">🌙</div>
+
+  <div class="progress-wrap">
+    <div class="progress" id="progressBar"></div>
+  </div>
+
+  <h2 id="progress">Question 1 / 8</h2>
+
+  <div class="instruction">Write this word:</div>
+  <div class="word" id="targetWord"></div>
+
+  <div class="answer-box" id="answerBox"></div>
+  <div class="letters" id="lettersBox"></div>
+
+  <button onclick="check()">Check</button>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="result"></h3>
+    <p id="info"></p>
+    <p id="scoreInfo" style="font-weight:bold;"></p>
+    <button onclick="next()">I got it</button>
+  </div>
+</div>
+
+<script>
+const data=[
+ {w:"START", fa:"شروع", pr:"اِستارت"},
+ {w:"OPEN", fa:"باز کردن", pr:"اوپِن"},
+ {w:"CLOSE", fa:"بستن", pr:"کلوز"},
+ {w:"YES", fa:"بله", pr:"یِس"},
+ {w:"NO", fa:"نه", pr:"نو"},
+ {w:"STOP", fa:"ایست", pr:"اِستاپ"},
+ {w:"PLAY", fa:"پخش / بازی", pr:"پِلِی"},
+ {w:"EXIT", fa:"خروج", pr:"اِگزیـت"}
+];
+
+let i=0, score=0;
+let selected=[];
+let mistakes=[];
+
+function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
+
+function load(){
+  selected=[];
+  answerBox.innerHTML="";
+  lettersBox.innerHTML="";
+  progress.innerText=`Question ${i+1} / ${data.length}`;
+  targetWord.innerText=data[i].w;
+
+  progressBar.style.width=((i)/data.length)*100+"%";
+
+  shuffle(data[i].w.split("")).forEach(l=>{
+    let d=document.createElement("div");
+    d.className="letter";
+    d.innerText=l;
+    d.onclick=()=>pick(d,l);
+    lettersBox.appendChild(d);
+  });
+}
+
+function pick(el,l){
+  el.style.display="none";
+  selected.push(l);
+
+  let d=document.createElement("div");
+  d.className="letter";
+  d.innerText=l;
+  d.onclick=()=>{
+    answerBox.removeChild(d);
+    selected.pop();
+    el.style.display="block";
+  };
+  answerBox.appendChild(d);
+}
+
+function check(){
+  let user=selected.join("");
+  popup.style.display="flex";
+
+  if(user===data[i].w){
+    score+=2;
+    result.innerHTML="✅ Correct";
+    result.className="correct";
+  }else{
+    score-=1;
+    result.innerHTML="❌ Wrong";
+    result.className="wrong";
+
+    mistakes.push({
+      correct:data[i].w,
+      user:user || "(خالی)",
+      fa:data[i].fa,
+      pr:data[i].pr
+    });
+  }
+
+  info.innerHTML=
+    `<b>${data[i].w}</b><br>
+     معنی: ${data[i].fa}<br>
+     تلفظ: ${data[i].pr}`;
+
+  scoreInfo.innerHTML=`امتیاز فعلی: ${score}`;
+}
+
+function next(){
+  popup.style.display="none";
+  i++;
+  if(i<data.length){
+    load();
+  }else{
+    showFinal();
+  }
+}
+
+function showFinal(){
+  let html = `
+    <h2>Test Completed!</h2>
+    <p class="correct">امتیاز نهایی: ${score}</p>
+  `;
+
+  if(mistakes.length > 0){
+    html += `<p class="wrong">تعداد خطاها: ${mistakes.length}</p>`;
+    html += `<div class="mistakes-title">لیست خطاهای شما</div>`;
+
+    mistakes.forEach((m, idx) => {
+      html += `
+        <div class="mistake-card">
+          <b>${idx+1}) ${m.correct}</b>
+          <div><span class="mistake-label">جواب شما:</span> <span class="mistake-user">${m.user}</span></div>
+          <div><span class="mistake-label">معنی:</span> ${m.fa}</div>
+          <div><span class="mistake-label">تلفظ:</span> ${m.pr}</div>
+        </div>
+      `;
+    });
+
+  } else {
+    html += `<p class="correct">عالی! هیچ خطایی نداشتی 🎉</p>`;
+  }
+
+  document.querySelector(".container").innerHTML = html;
+}
+
+/* THEME SWITCH */
+let isLight=false;
+themeBtn.onclick=toggleTheme;
+logo.onclick=toggleTheme;
+
+function toggleTheme(){
+  isLight=!isLight;
+  document.body.className=isLight?"light":"";
+  themeBtn.innerText=isLight?"☀":"🌙";
+}
+
+/* START */
+load();
+</script>
+
+</body>
+</html>
