@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Chunk Cycle Pro</title>
+
+<style>
+/* ================= ROOT THEMES ================= */
+:root{
+  --green:#91c300;
+  --red:#ff4b5c;
+  --dark-bg:#050711;
+  --dark-card:#111522;
+  --dark-gray:#2d334a;
+  --light-bg:#f5f5f5;
+  --light-card:#ffffff;
+  --light-gray:#e0e0e0;
+  --text-dark:#ffffff;
+  --text-light:#000000;
+  --shadow:rgba(0,0,0,0.55);
+}
+
+*{
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body.dark{
+  background:radial-gradient(circle at top,#1b2540,#050711);
+  color:var(--text-dark);
+}
+body.light{
+  background:radial-gradient(circle at top,#ffffff,#dcdcdc);
+  color:var(--text-light);
+}
+
+body{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+  transition:background 0.5s ease, color 0.5s ease;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:90px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:10px;
+  z-index:20;
+}
+
+/* دکمهٔ تم در گوشهٔ بالا سمت چپ */
+.theme-btn{
+  position:absolute;
+  left:15px;
+  top:15px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:20px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(6px);
+  color:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+body.light .theme-btn{
+  background:rgba(0,0,0,0.15);
+  color:#000;
+}
+.theme-btn:hover{
+  transform:scale(1.12);
+}
+
+/* ================= LOGO ================= */
+.logo{
+  position:absolute;
+  top:15px;          /* فاصله از بالا */
+  right:15px;        /* فاصله از راست */
+  cursor:pointer;
+  z-index:30;
+}
+.logo img{
+  width:130px;
+  filter:drop-shadow(0 10px 26px rgba(0,255,118,0.55));
+  animation:float 3.5s ease-in-out infinite;
+  transition:transform 0.35s ease, filter 0.35s ease;
+}
+.logo img:hover{
+  transform:translateY(-6px) scale(1.06);
+  filter:drop-shadow(0 14px 32px rgba(0,255,118,0.85));
+}
+.logo img:active{
+  transform:scale(0.9);
+}
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0);}
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  width:100%;
+  max-width:520px;
+  background:var(--dark-card);
+  border-radius:22px;
+  padding:110px 30px 30px 30px; /* فضای بیشتر برای لوگوی بالاتر */
+  box-shadow:0 18px 45px var(--shadow);
+  position:relative;
+  overflow:hidden;
+  transition:background 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
+}
+body.light .container{
+  background:var(--light-card);
+}
+.container:hover{
+  transform:translateY(-3px);
+}
+
+/* ================= UI ================= */
+h2{
+  text-align:center;
+  margin-bottom:8px;
+  font-weight:650;
+}
+
+.progress-container{
+  width:100%;
+  height:10px;
+  background:rgba(255,255,255,0.08);
+  border-radius:999px;
+  overflow:hidden;
+  margin-bottom:15px;
+}
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#91c300,#00ffb3);
+  transition:width 0.4s ease;
+}
+
+.stage{
+  text-align:center;
+  opacity:.8;
+  margin-bottom:12px;
+  font-size:14px;
+}
+
+.word{
+  text-align:center;
+  font-size:26px;
+  letter-spacing:3px;
+  margin:12px 0;
+  color:var(--green);
+  text-shadow:0 0 10px rgba(0,255,118,0.6);
+}
+
+/* ================= ANSWER & LETTERS ================= */
+.answer-box{
+  min-height:60px;
+  border:2px dashed rgba(255,255,255,0.12);
+  border-radius:16px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:18px 0;
+  padding:12px;
+  background:rgba(0,0,0,0.25);
+  backdrop-filter:blur(10px);
+}
+body.light .answer-box{
+  border-color:rgba(0,0,0,0.12);
+  background:rgba(255,255,255,0.6);
+}
+
+.letters{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.letter{
+  background:var(--dark-gray);
+  padding:12px 16px;
+  border-radius:14px;
+  cursor:pointer;
+  user-select:none;
+  transition:all 0.25s ease;
+  font-size:18px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.4);
+}
+body.light .letter{
+  background:var(--light-gray);
+}
+.letter:hover{
+  transform:scale(1.12) translateY(-2px);
+  background:var(--green);
+  color:#000;
+}
+
+/* ================= NEXT BUTTON ================= */
+.next-btn{
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  background:#444;
+  color:#aaa;
+  cursor:not-allowed;
+  transition:0.3s;
+}
+.next-btn.active{
+  background:linear-gradient(90deg,#91c300,#00ffb3);
+  color:#000;
+  cursor:pointer;
+}
+
+/* ================= RESULT MODAL ================= */
+.result-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s ease;
+  z-index:50;
+}
+.result-overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.result-card{
+  width:90%;
+  max-width:360px;
+  border-radius:20px;
+  padding:22px;
+  background:rgba(15,18,30,0.92);
+  color:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,0.7);
+  transform:scale(0.85) translateY(20px);
+  opacity:0;
+  transition:transform 0.35s ease, opacity 0.35s ease;
+}
+body.light .result-card{
+  background:rgba(255,255,255,0.96);
+  color:#000;
+}
+.result-overlay.show .result-card{
+  transform:scale(1) translateY(0);
+  opacity:1;
+}
+
+.result-icon{
+  font-size:40px;
+  text-align:center;
+  margin-bottom:10px;
+}
+.result-title{
+  text-align:center;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.result-detail{
+  font-size:15px;
+  line-height:1.7;
+  margin-top:6px;
+  text-align:center;
+}
+.result-score{
+  margin-top:10px;
+  font-size:15px;
+  font-weight:600;
+  text-align:center;
+  color:var(--green);
+}
+
+.modal-next{
+  margin-top:18px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,#91c300,#00ffb3);
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  color:#000;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:500px){
+  .container{padding:120px 20px 25px 20px;}
+  .word{font-size:22px;}
+  .letter{padding:10px 14px;font-size:16px;}
+}
+</style>
+</head>
+
+<body class="dark">
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <button class="theme-btn" id="themeBtn">🌙</button>
+
+  <div class="logo" id="logoToggle">
+    <img src="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
+  </div>
+</div>
+
+<div class="container">
+
+  <h2>English Learning Game</h2>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="stage" id="stage"></div>
+  <div class="word" id="targetWord"></div>
+
+  <div class="answer-box" id="answerBox"></div>
+  <div class="letters" id="lettersBox"></div>
+
+  <button class="next-btn" id="nextBtn">Continue</button>
+
+  <div class="info" id="info"></div>
+  <div class="score">Score: <span id="score">0</span></div>
+
+</div>
+
+<!-- RESULT MODAL -->
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-card">
+    <div class="result-icon" id="resultIcon">❌</div>
+    <div class="result-title" id="resultTitle">نتیجه</div>
+    <div class="result-detail" id="resultDetail"></div>
+    <div class="result-score" id="resultScore"></div>
+    <button class="modal-next" id="modalNext">Next</button>
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const data = {
+  stages:["noun","verb","chunk"],
+  score:{ noun:2, verb:2, chunk:4 },
+pairs:[
+  {
+    noun: {w: "decision", fa: "تصمیم", pr: "دِسیژن"},
+    verb: {w: "make", fa: "انجام دادن", pr: "مِیک"},
+    chunk: "make decision",
+    chunkFa: "تصمیم گرفتن"
+  },
+  {
+    noun: {w: "notes", fa: "یادداشت", pr: "نوتس"},
+    verb: {w: "take", fa: "انجام دادن", pr: "تِیک"},
+    chunk: "take notes",
+    chunkFa: "یادداشت برداشتن"
+  },
+  {
+    noun: {w: "class", fa: "کلاس", pr: "کلاس"},
+    verb: {w: "attend", fa: "حاضر شدن", pr: "اَتِند"},
+    chunk: "attend class",
+    chunkFa: "در کلاس حاضر شدن"
+  },
+  {
+    noun: {w: "assignment", fa: "تکلیف", pr: "اَساینمنت"},
+    verb: {w: "submit", fa: "تحویل دادن", pr: "سابمیت"},
+    chunk: "submit assignment",
+    chunkFa: "تحویل تکلیف دادن"
+  },
+  {
+    noun: {w: "exam", fa: "امتحان", pr: "اِگزم"},
+    verb: {w: "pass", fa: "قبول شدن", pr: "پاس"},
+    chunk: "pass exam",
+    chunkFa: "قبول شدن در امتحان"
+  },
+  {
+    noun: {w: "exam", fa: "امتحان", pr: "اِگزم"},
+    verb: {w: "fail", fa: "رد شدن", pr: "فِیل"},
+    chunk: "fail exam",
+    chunkFa: "رد شدن در امتحان"
+  },
+  {
+    noun: {w: "homework", fa: "تکلیف", pr: "هومورک"},
+    verb: {w: "do", fa: "انجام دادن", pr: "دو"},
+    chunk: "do homework",
+    chunkFa: "انجام تکالیف"
+  },
+  {
+    noun: {w: "presentation", fa: "پرزنتیشن", pr: "پریزنتیشن"},
+    verb: {w: "prepare", fa: "آماده کردن", pr: "پریپیر"},
+    chunk: "prepare presentation",
+    chunkFa: "آماده کردن پرزنتیشن"
+  },
+  {
+    noun: {w: "lecture", fa: "درس", pr: "لکچر"},
+    verb: {w: "give", fa: "ارائه دادن", pr: "گیو"},
+    chunk: "give lecture",
+    chunkFa: "ارائه درس دادن"
+  },
+  {
+    noun: {w: "meeting", fa: "جلسه", pr: "میتینگ"},
+    verb: {w: "schedule", fa: "برنامه‌ریزی کردن", pr: "اسکجول"},
+    chunk: "schedule meeting",
+    chunkFa: "جلسه برنامه‌ریزی کردن"
+  },
+  {
+    noun: {w: "workshop", fa: "کارگاه", pr: "ورکشاپ"},
+    verb: {w: "organize", fa: "برگزار کردن", pr: "اورگنایز"},
+    chunk: "organize workshop",
+    chunkFa: "کارگاه برگزار کردن"
+  },
+  {
+    noun: {w: "report", fa: "گزارش", pr: "رپورت"},
+    verb: {w: "write", fa: "نوشتن", pr: "رایت"},
+    chunk: "write report",
+    chunkFa: "گزارش نوشتن"
+  },
+  {
+    noun: {w: "book", fa: "کتاب", pr: "بوک"},
+    verb: {w: "read", fa: "خواندن", pr: "رید"},
+    chunk: "read book",
+    chunkFa: "کتاب خواندن"
+  },
+  {
+    noun: {w: "notes", fa: "یادداشت", pr: "نوتس"},
+    verb: {w: "review", fa: "مرور کردن", pr: "ریویو"},
+    chunk: "review notes",
+    chunkFa: "مرور یادداشت‌ها"
+  },
+  {
+    noun: {w: "test", fa: "تست", pr: "تست"},
+    verb: {w: "take", fa: "انجام دادن", pr: "تِیک"},
+    chunk: "take test",
+    chunkFa: "تست دادن"
+  },
+  {
+    noun: {w: "seminar", fa: "سمینار", pr: "سمینار"},
+    verb: {w: "attend", fa: "حاضر شدن", pr: "اَتِند"},
+    chunk: "attend seminar",
+    chunkFa: "در سمینار شرکت کردن"
+  },
+  {
+    noun: {w: "project", fa: "پروژه", pr: "پراجکت"},
+    verb: {w: "complete", fa: "تکمیل کردن", pr: "کامپلیت"},
+    chunk: "complete project",
+    chunkFa: "تکمیل پروژه"
+  },
+  {
+    noun: {w: "question", fa: "سوال", pr: "کوئسچن"},
+    verb: {w: "ask", fa: "پرسیدن", pr: "اسک"},
+    chunk: "ask question",
+    chunkFa: "سوال پرسیدن"
+  },
+  {
+    noun: {w: "question", fa: "سوال", pr: "کوئسچن"},
+    verb: {w: "answer", fa: "پاسخ دادن", pr: "انسر"},
+    chunk: "answer question",
+    chunkFa: "پاسخ دادن"
+  },
+  {
+    noun: {w: "subject", fa: "درس", pr: "سابجکت"},
+    verb: {w: "study", fa: "مطالعه کردن", pr: "استادی"},
+    chunk: "study subject",
+    chunkFa: "مطالعه یک درس"
+  },
+  {
+    noun: {w: "problem", fa: "مشکل", pr: "پرابلم"},
+    verb: {w: "solve", fa: "حل کردن", pr: "سالو"},
+    chunk: "solve problem",
+    chunkFa: "حل کردن مشکل"
+  },
+  {
+    noun: {w: "class", fa: "کلاس", pr: "کلاس"},
+    verb: {w: "join", fa: "ثبت‌نام کردن", pr: "جوین"},
+    chunk: "join class",
+    chunkFa: "ثبت‌نام در کلاس"
+  },
+  {
+    noun: {w: "course", fa: "دوره", pr: "کورس"},
+    verb: {w: "enroll", fa: "نام‌نویسی کردن", pr: "انرول"},
+    chunk: "enroll in course",
+    chunkFa: "نام‌نویسی در دوره"
+  },
+  {
+    noun: {w: "exam", fa: "امتحان", pr: "اِگزم"},
+    verb: {w: "prepare", fa: "آماده شدن", pr: "پریپیر"},
+    chunk: "prepare for exam",
+    chunkFa: "آماده شدن برای امتحان"
+  },
+  {
+    noun: {w: "exam", fa: "امتحان", pr: "اِگزم"},
+    verb: {w: "take", fa: "انجام دادن", pr: "تِیک"},
+    chunk: "take exam",
+    chunkFa: "امتحان دادن"
+  },
+  {
+    noun: {w: "discussion", fa: "بحث", pr: "دیسکاشن"},
+    verb: {w: "participate", fa: "شرکت کردن", pr: "پارتیسیپیت"},
+    chunk: "participate in discussion",
+    chunkFa: "شرکت در بحث"
+  },
+  {
+    noun: {w: "team", fa: "تیم", pr: "تیم"},
+    verb: {w: "lead", fa: "هدایت کردن", pr: "لید"},
+    chunk: "lead team",
+    chunkFa: "هدایت تیم"
+  },
+  {
+    noun: {w: "lecture", fa: "سخنرانی", pr: "لکچر"},
+    verb: {w: "attend", fa: "حاضر شدن", pr: "اَتِند"},
+    chunk: "attend lecture",
+    chunkFa: "حضور در سخنرانی"
+  },
+  {
+    noun: {w: "idea", fa: "ایده", pr: "آیدیا"},
+    verb: {w: "present", fa: "ارائه دادن", pr: "پریزنت"},
+    chunk: "present idea",
+    chunkFa: "ارائه ایده"
+  },
+  {
+    noun: {w: "report", fa: "گزارش", pr: "رپورت"},
+    verb: {w: "submit", fa: "تحویل دادن", pr: "سابمیت"},
+    chunk: "submit report",
+    chunkFa: "تحویل گزارش"
+  },
+  {
+    noun: {w: "experience", fa: "تجربه", pr: "اکسپیرینس"},
+    verb: {w: "gain", fa: "کسب کردن", pr: "گین"},
+    chunk: "gain experience",
+    chunkFa: "تجربه کسب کردن"
+  },
+  {
+    noun: {w: "skill", fa: "مهارت", pr: "اسکیل"},
+    verb: {w: "learn", fa: "یاد گرفتن", pr: "لرن"},
+    chunk: "learn skill",
+    chunkFa: "مهارت یاد گرفتن"
+  },
+  {
+    noun: {w: "class", fa: "کلاس", pr: "کلاس"},
+    verb: {w: "teach", fa: "تدریس کردن", pr: "تیچ"},
+    chunk: "teach class",
+    chunkFa: "تدریس کردن"
+  },
+  {
+    noun: {w: "help", fa: "کمک", pr: "هِلپ"},
+    verb: {w: "ask", fa: "درخواست کردن", pr: "اسک"},
+    chunk: "ask for help",
+    chunkFa: "درخواست کمک"
+  },
+  {
+    noun: {w: "break", fa: "استراحت", pr: "بریک"},
+    verb: {w: "take", fa: "انجام دادن", pr: "تِیک"},
+    chunk: "take break",
+    chunkFa: "استراحت کوتاه"
+  },
+  {
+    noun: {w: "task", fa: "کار", pr: "تسک"},
+    verb: {w: "complete", fa: "انجام دادن", pr: "کامپلیت"},
+    chunk: "complete task",
+    chunkFa: "انجام یک کار"
+  },
+  {
+    noun: {w: "lesson", fa: "درس", pr: "لسن"},
+    verb: {w: "prepare", fa: "آماده کردن", pr: "پریپیر"},
+    chunk: "prepare lesson",
+    chunkFa: "آماده کردن درس"
+  }
+]
+};
+
+/* ================= GAME CLASS ================= */
+class Game{
+  constructor(){
+    this.index=0;
+    this.phase=0;
+    this.selected=[];
+    this.checked=false;
+    this.score=0;
+
+    this.el={
+      stage:document.getElementById("stage"),
+      word:document.getElementById("targetWord"),
+      answer:document.getElementById("answerBox"),
+      letters:document.getElementById("lettersBox"),
+      info:document.getElementById("info"),
+      next:document.getElementById("nextBtn"),
+      score:document.getElementById("score"),
+      progress:document.getElementById("progressBar"),
+      overlay:document.getElementById("resultOverlay"),
+      rIcon:document.getElementById("resultIcon"),
+      rTitle:document.getElementById("resultTitle"),
+      rDetail:document.getElementById("resultDetail"),
+      rScore:document.getElementById("resultScore")
+    };
+
+    this.load();
+  }
+
+  shuffle(a){ return a.sort(()=>Math.random()-0.5); }
+
+  updateProgress(){
+    const total=data.pairs.length * 3;
+    const step=this.index*3 + this.phase + (this.checked?1:0);
+    this.el.progress.style.width=(step/total)*100+"%";
+  }
+
+  load(){
+    this.selected=[];
+    this.checked=false;
+    this.el.answer.innerHTML="";
+    this.el.letters.innerHTML="";
+    this.el.info.innerHTML="";
+    this.el.next.classList.remove("active");
+    this.updateProgress();
+
+    if(this.index>=data.pairs.length){
+      document.querySelector(".container").innerHTML=
+      `<h2>Game Finished</h2>
+       <div style="text-align:center;margin-top:20px;font-size:18px">
+       Final Score: ${this.score}
+       </div>`;
+      return;
+    }
+
+    const pair=data.pairs[this.index];
+    const stageName=data.stages[this.phase];
+
+    const stageInfo={
+      noun:{ text:pair.noun.w, type:"اسم", fa:pair.noun.fa, pr:pair.noun.pr },
+      verb:{ text:pair.verb.w, type:"فعل", fa:pair.verb.fa, pr:pair.verb.pr },
+      chunk:{ text:pair.chunk, type:"ترکیب", fa:pair.chunkFa, pr:"" }
+    }[stageName];
+
+    this.currentStage=stageInfo;
+    this.correct=stageInfo.text;
+
+    this.el.stage.innerText=`مرحله ${this.phase+1} — ${stageInfo.type}`;
+    this.el.word.innerText=this.correct;
+
+    this.shuffle(this.correct.split("")).forEach(l=>{
+      const d=document.createElement("div");
+      d.className="letter";
+      d.innerText=l;
+      d.onclick=()=>this.pick(d,l);
+      this.el.letters.appendChild(d);
+    });
+  }
+
+  pick(el,l){
+    if(this.checked) return;
+    el.style.opacity="0";
+    el.style.pointerEvents="none";
+    this.selected.push(l);
+
+    const d=document.createElement("div");
+    d.className="letter";
+    d.innerText=l;
+    d.onclick=()=>{
+      if(this.checked) return;
+      this.el.answer.removeChild(d);
+      const idx=this.selected.indexOf(l);
+      if(idx>-1) this.selected.splice(idx,1);
+      el.style.opacity="1";
+      el.style.pointerEvents="auto";
+    };
+    this.el.answer.appendChild(d);
+
+    if(this.selected.length === this.correct.length){
+      setTimeout(()=>this.check(),200);
+    }
+  }
+
+  showResultCard(isCorrect, delta){
+    const st=this.currentStage;
+
+    this.el.rIcon.textContent = isCorrect ? "✅" : "❌";
+    this.el.rTitle.textContent = isCorrect ? "آفرین! درست جواب دادی" : "این یکی اشتباه شد";
+
+    let detail=`معنی: ${st.fa}<br>`;
+    if(st.pr) detail+=`تلفظ: ${st.pr}<br>`;
+    detail+=`نوع: ${st.type}`;
+
+    this.el.rDetail.innerHTML=detail;
+    this.el.rScore.textContent = (delta>0 ? "+"+delta : delta) + " امتیاز";
+
+    this.el.overlay.classList.add("show");
+  }
+
+  check(){
+    if(this.checked) return;
+    const user=this.selected.join("");
+    this.checked=true;
+
+    const stageName=data.stages[this.phase];
+    let delta=0;
+
+    if(user===this.correct){
+      delta=data.score[stageName];
+      this.score+=delta;
+      this.showResultCard(true, delta);
+    }else{
+      delta=-1;
+      this.score+=delta;
+      this.showResultCard(false, delta);
+    }
+
+    this.el.score.innerText=this.score;
+    this.el.next.classList.add("active");
+    this.updateProgress();
+  }
+
+  next(){
+    this.el.overlay.classList.remove("show");
+    this.phase++;
+    if(this.phase>2){
+      this.phase=0;
+      this.index++;
+    }
+    this.load();
+  }
+}
+
+/* ================= INIT ================= */
+const game=new Game();
+document.getElementById("modalNext").onclick=()=>game.next();
+
+/* ================= THEME SWITCH ================= */
+const themeBtn=document.getElementById("themeBtn");
+const logoToggle=document.getElementById("logoToggle");
+
+function applyTheme(t){
+  document.body.className=t;
+  localStorage.setItem("theme",t);
+  themeBtn.textContent = t==="dark" ? "🌙" : "☀";
+}
+
+applyTheme(localStorage.getItem("theme") || "dark");
+
+function toggleTheme(){
+  const t=document.body.classList.contains("dark") ? "light" : "dark";
+  applyTheme(t);
+}
+
+themeBtn.onclick=toggleTheme;
+logoToggle.onclick=toggleTheme;
+</script>
+
+</body>
+</html>
