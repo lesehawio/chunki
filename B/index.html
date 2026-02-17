@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chunki | ورود به بازی</title>
+<link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
+
+<style>
+:root{
+  --pink:#82c500;
+  --pink2:#bfe476;
+  --bg1:#0e1430;
+  --bg2:#141b3f;
+  --card:#1b2352;
+  --text:#f1f3f9;
+  --muted:#b8bfd9;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Vazirmatn,Tahoma,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -200px,rgb(124, 191, 0),transparent),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:430px;
+  background:rgba(27,35,82,.92);
+  backdrop-filter:blur(16px);
+  border-radius:30px;
+  padding:36px 30px 30px;
+  box-shadow:
+    0 40px 90px rgba(0,0,0,.55),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+  text-align:center;
+}
+
+/* Logo */
+.logo img{
+  width:92px;
+  filter:drop-shadow(0 18px 40px rgb(158, 182, 0));
+  margin-bottom:18px;
+}
+
+/* Text */
+.title{
+  font-size:21px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.subtitle{
+  font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
+  margin-bottom:26px;
+}
+
+/* Divider */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  margin:26px 0;
+}
+
+/* Input */
+input{
+  width:100%;
+  padding:16px;
+  border-radius:18px;
+  border:none;
+  outline:none;
+  font-size:15px;
+  background:#121845;
+  color:#fff;
+  text-align:center;
+}
+input::placeholder{
+  color:#9aa3c7;
+}
+
+/* Button */
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 20px 45px rgb(107, 173, 1);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 26px 60px rgb(172, 192, 0);
+}
+button:active{
+  transform:scale(.97);
+}
+
+/* Error */
+.error{
+  margin-top:16px;
+  font-size:13px;
+  color:#ffb6c1;
+  display:none;
+}
+
+/* Footer */
+.footer{
+  margin-top:22px;
+  font-size:12px;
+  color:#aeb5d6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="logo">
+    <img src="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png" alt="Quizly">
+  </div>
+
+  <div class="title">
+    به بازی chunki خوش آمدید
+  </div>
+
+  <div class="subtitle">
+    این آزمون برای سنجش درک واقعی شما از chunking طراحی شده، نه حفظ لغت‌های جدا.<br>
+    اکثر زبان‌آموزها اشتباه می‌خوانند: کلمه + معنی، کلمه + معنی. اما مغز با «تکه‌های معنادار» کار می‌کند.<br>
+    اینجا قرار نیست انگیزه‌ی کاذب بگیری. قرار است بفهمی چرا روان‌صحبت‌کردن به گرامر ربط ندارد، به الگو ربط دارد.<br>
+    <b>آماده‌ای؟ فقط یک بار می‌توانی وارد شوی.</b>
+  </div>
+
+  <div class="divider"></div>
+
+  <input
+    type="password"
+    id="password"
+    placeholder="رمز ورود آزمون"
+    autocomplete="off"
+  >
+
+  <button onclick="login()">ورود به آزمون</button>
+
+  <div class="error" id="error">
+    ⛔ رمز ورود نادرست است
+  </div>
+
+  <div class="footer">
+    پس از ورود، امکان بازگشت وجود ندارد
+  </div>
+
+</div>
+
+<script>
+/*
+  ===============================
+  Quizly Secure Gate v2.0
+  Access is temporary & controlled
+  ===============================
+  Hint for intruders:
+  Everything you see is NOT the password 😉
+*/
+
+// ───────────── FAKE ZONES ─────────────
+
+// const PASSWORD = "QUIZZLY-2025";
+// const PASSWORD = "EXAM-ONLY";
+// const PASSWORD = "PAID-ACCESS";
+// const PASSWORD = "NO-FREE-LUNCH";
+
+// ───────────── REAL DATA (OBFUSCATED) ─────────────
+
+// letters mixed with ascii numbers (psychological noise)
+const A = ["118", "e", "115", "e", "104"];   // looks harmless
+const B = [53, 52, 50, 51, 54, 57];          // numeric bait
+const C = 65;                               // not a letter, just a number 🙂
+
+// ───────────── CORE LOGIC ─────────────
+
+function _α(arr){
+  // decode numbers only, leave letters untouched
+  return arr.map(x =>
+    isNaN(x) ? x : String.fromCharCode(+x)
+  ).join("");
+}
+
+function _β(arr){
+  // classic ascii decode
+  return arr.map(n => String.fromCharCode(n)).join("");
+}
+
+function _γ(){
+  // delayed character reveal
+  return String.fromCharCode(C);
+}
+
+function build(){
+  /*
+    Real password is built ONLY at runtime.
+    There is no visible plain-text password anywhere.
+  */
+  return _α(A) + _γ() + "-" + _β(B);
+}
+
+// ───────────── LOGIN HANDLER ─────────────
+
+function login(){
+  const input = document.getElementById("password").value.trim();
+  const error = document.getElementById("error");
+
+  error.style.display = "none";
+
+  // small delay = more psychological weight
+  setTimeout(() => {
+    if(input === build()){
+      window.location.href = "QUIZZ.html";
+    } else {
+      error.style.display = "block";
+    }
+  }, 400);
+}
+
+// ───────────── ANTI-CASUAL-INSPECT (PSYCHO) ─────────────
+
+// Disable right click (annoyance layer)
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Fake console noise
+console.log("%cACCESS DENIED", "color:red;font-size:18px");
+console.log("Nothing useful here. Stop looking 🙂");
+
+</script>
+
+
+
+</body>
+</html>
