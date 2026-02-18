@@ -2,6 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<!-- اضافه کردن viewport برای کنترل مقیاس در موبایل -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منوی اصلی – Chunki</title>
 <link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
 <style>
@@ -30,7 +32,9 @@
         font-family: "Vazirmatn", sans-serif;
         background: var(--bg);
         color: var(--text-main);
-        overflow: hidden;
+        /* جلوگیری از اسکرول افقی ناشی از توپ‌های نورانی */
+        overflow-x: hidden;
+        width: 100%;
     }
 
     /* نورهای پس‌زمینه */
@@ -204,6 +208,25 @@
         box-shadow: 0 10px 24px rgba(130,197,0,0.55);
     }
 
+    /* تنظیمات اضافی برای صفحه‌های خیلی کوچک (مثلاً ۳۲۰px) */
+    @media (max-width: 400px) {
+        .shell {
+            padding: 12px;
+        }
+        .card {
+            padding: 20px 16px;
+        }
+        .btn-pill {
+            min-width: 70px;
+            font-size: 0.7rem;
+        }
+        .btn-title {
+            font-size: 0.95rem;
+        }
+        .btn-sub {
+            font-size: 0.72rem;
+        }
+    }
 </style>
 </head>
 
@@ -239,7 +262,6 @@
                 </div>
                 <div class="btn-pill"> ➜ مشاهده</div>
             </a>
-
 
         </div>
 
