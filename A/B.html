@@ -231,72 +231,55 @@ button:hover{transform:scale(1.03);}
 
 // تشخیصی
 const diagnostic = [
-  {
-    en: "___ am ready.",
-    fa: "من آماده‌ام.",
-    pr: "آی اَم رِدی",
-    opts: ["I","he","they"],
-    answer: "I"
-  },
-  {
-    en: "She ___ happy.",
-    fa: "او خوشحال است.",
-    pr: "شی ایز هَپی",
-    opts: ["is","go","have"],
-    answer: "is"
-  }
+  {en:"___ am ready.",fa:"من آماده‌ام.",pr:"آی اَم رِدی",opts:["I","he","they"],answer:"I"},
+  {en:"She _ happy.",fa:"او خوشحال است.",pr:"شی ایز هَپی",opts:["is","go","have"],answer:"is"},
+  {en:"We _ together.",fa:"ما با هم کار می‌کنیم.",pr:"وی وُرک",opts:["work","go","take"],answer:"work"},
+  {en:"They _ here.",fa:"آنها اینجا هستند.",pr:"دِی آر هیر",opts:["are","do","make"],answer:"are"},
+  {en:"I _ a car.",fa:"من یک ماشین دارم.",pr:"آی هَو",opts:["have","go","take"],answer:"have"},
+  {en:"He _ to work.",fa:"او به کار می‌رود.",pr:"هی گوز",opts:["go","come","give"],answer:"go"},
+  {en:"She _ me.",fa:"او مرا دوست دارد.",pr:"شی لایک",opts:["like","know","need"],answer:"like"},
+  {en:"We ___ English.",fa:"ما انگلیسی یاد می‌گیریم.",pr:"وی نو",opts:["know","think","give"],answer:"know"}
 ];
+
 
 // جمله‌سازی
 const combine = [
-  {
-    words: ["ready","I","am"],
-    fa: "من آماده‌ام.",
-    pr: "آی اَم رِدی",
-    answer: "I am ready"
-  },
-  {
-    words: ["work","we","together"],
-    fa: "ما با هم کار می‌کنیم.",
-    pr: "وی وُرک تِگِدِر",
-    answer: "we work together"
-  }
+  {words:["ready","I","am"],fa:"من آماده‌ام.",pr:"آی اَم رِدی",answer:"I am ready"},
+  {words:["work","we"],fa:"ما کار می‌کنیم.",pr:"وی وُرک",answer:"we work"},
+  {words:["live","I","here"],fa:"من اینجا زندگی می‌کنم.",pr:"آی لیو هیر",answer:"I live here"},
+  {words:["they","happy","are"],fa:"آنها خوشحال هستند.",pr:"دِی آر هَپی",answer:"they are happy"},
+  {words:["I","you","like"],fa:"من تو را دوست دارم.",pr:"آی یو لایک",answer:"I like you"},
+  {words:["we","go","now"],fa:"ما الان می‌رویم.",pr:"وی گو ناو",answer:"we go now"},
+  {words:["she","work"],fa:"او کار می‌کند.",pr:"شی وُرک",answer:"she works"},
+  {words:["he","come","here"],fa:"او به اینجا می‌آید.",pr:"هی کام هیر",answer:"he comes here"}
 ];
+
 
 // حدس‌زدن نوع ۱
 const guessMeaning = [
-  {
-    q: "کدام از کلمات زیر معنی «من» می‌دهد؟",
-    opts: ["I","you","he"],
-    fa: "من",
-    pr: "آی",
-    answer: "I"
-  },
-  {
-    q: "کدام از کلمات زیر معنی «او (مذکر)» می‌دهد؟",
-    opts: ["she","he","we"],
-    fa: "او (مذکر)",
-    pr: "هی",
-    answer: "he"
-  }
+  {q:"کدام کلمه معنی «من» است؟",opts:["I","you","they"],fa:"من",pr:"آی",answer:"I"},
+  {q:"کدام کلمه معنی «ما» است؟",opts:["we","he","she"],fa:"ما",pr:"وی",answer:"we"},
+  {q:"کدام کلمه معنی «آنها» است؟",opts:["they","it","you"],fa:"آنها",pr:"دِی",answer:"they"},
+  {q:"کدام کلمه معنی «داشتن» است؟",opts:["have","go","make"],fa:"داشتن",pr:"هَو",answer:"have"},
+  {q:"کدام کلمه معنی «رفتن» است؟",opts:["go","come","take"],fa:"رفتن",pr:"گو",answer:"go"},
+  {q:"کدام کلمه معنی «دادن» است؟",opts:["give","get","want"],fa:"دادن",pr:"گیو",answer:"give"},
+  {q:"کدام کلمه معنی «فکر کردن» است؟",opts:["think","know","live"],fa:"فکر کردن",pr:"تینک",answer:"think"},
+  {q:"کدام کلمه معنی «زندگی کردن» است؟",opts:["live","work","make"],fa:"زندگی کردن",pr:"لیو",answer:"live"},
+  {q:"کدام کلمه معنی «بله» است؟",opts:["yes","no","not"],fa:"بله",pr:"یِس",answer:"yes"}
 ];
+
 
 // حدس‌زدن نوع ۲
 const guessWord = [
-  {
-    q: "معنی کلمهٔ «I» چیست؟",
-    opts: ["من","تو","ما"],
-    fa: "من",
-    pr: "آی",
-    answer: "من"
-  },
-  {
-    q: "معنی کلمهٔ «we» چیست؟",
-    opts: ["او","ما","آنها"],
-    fa: "ما",
-    pr: "وی",
-    answer: "ما"
-  }
+  {q:"معنی «you» چیست؟",opts:["تو","ما","او"],fa:"تو",pr:"یو",answer:"تو"},
+  {q:"معنی «he» چیست؟",opts:["او","آنها","من"],fa:"او",pr:"هی",answer:"او"},
+  {q:"معنی «she» چیست؟",opts:["او","تو","ما"],fa:"او",pr:"شی",answer:"او"},
+  {q:"معنی «it» چیست؟",opts:["آن","او","ما"],fa:"آن",pr:"ایت",answer:"آن"},
+  {q:"معنی «do» چیست؟",opts:["کردن","رفتن","داشتن"],fa:"کردن",pr:"دو",answer:"کردن"},
+  {q:"معنی «make» چیست؟",opts:["ساختن","دادن","گرفتن"],fa:"ساختن",pr:"مِیک",answer:"ساختن"},
+  {q:"معنی «get» چیست؟",opts:["گرفتن","دادن","خواستن"],fa:"گرفتن",pr:"گِت",answer:"گرفتن"},
+  {q:"معنی «want» چیست؟",opts:["خواستن","نیاز داشتن","دوست داشتن"],fa:"خواستن",pr:"وانت",answer:"خواستن"},
+  {q:"معنی «need» چیست؟",opts:["نیاز داشتن","دانستن","فکر کردن"],fa:"نیاز داشتن",pr:"نید",answer:"نیاز داشتن"}
 ];
 
 // ترتیب نوع سؤال‌ها
