@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<!-- اضافه کردن viewport برای کنترل مقیاس در موبایل -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منوی اصلی – Chunki</title>
+<link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap');
+
+    :root {
+        --accent: #82c500;
+        --accent-glow: rgba(130,197,0,0.55);
+
+        --bg: radial-gradient(circle at top, #1f2933 0, #020617 55%, #000 100%);
+        --text-main: #e5e7eb;
+        --text-sub: #9ca3af;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Vazirmatn", sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+        /* جلوگیری از اسکرول افقی ناشی از توپ‌های نورانی */
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* نورهای پس‌زمینه */
+    .orb {
+        position: fixed;
+        width: 420px;
+        height: 420px;
+        border-radius: 999px;
+        filter: blur(60px);
+        opacity: 0.9;
+        z-index: -1;
+        mix-blend-mode: screen;
+    }
+    .orb.orb-1 {
+        background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+        top: -120px;
+        right: -80px;
+        animation: float1 12s ease-in-out infinite alternate;
+    }
+    .orb.orb-2 {
+        background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+        bottom: -140px;
+        left: -60px;
+        animation: float2 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes float1 {
+        from { transform: translate3d(0,0,0); }
+        to   { transform: translate3d(-40px,40px,0); }
+    }
+    @keyframes float2 {
+        from { transform: translate3d(0,0,0); }
+        to   { transform: translate3d(40px,-30px,0); }
+    }
+
+    .shell {
+        width: 100%;
+        max-width: 460px;
+        padding: 24px;
+    }
+
+    .card {
+        position: relative;
+        border-radius: 32px;
+        padding: 28px 26px 26px;
+        background: rgba(15,23,42,0.72);
+        backdrop-filter: blur(26px);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow:
+            0 26px 60px rgba(0,0,0,0.85),
+            inset 0 0 25px rgba(255,255,255,0.05);
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: 30px;
+        border: 1px solid rgba(255,255,255,0.06);
+        pointer-events: none;
+    }
+
+    .logo-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+        max-width: 150px;
+        filter: drop-shadow(0 18px 40px rgba(0,0,0,0.9));
+        animation: logoGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+        from { filter: drop-shadow(0 0 10px var(--accent-glow)); }
+        to   { filter: drop-shadow(0 0 22px var(--accent)); }
+    }
+
+    .title {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 0.86rem;
+        color: var(--text-sub);
+        margin-bottom: 22px;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .menu-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 16px;
+        border-radius: 18px;
+        text-decoration: none;
+        color: var(--text-main);
+
+        background: rgba(15,23,42,0.9);
+        border: 1px solid rgba(130,197,0,0.45);
+
+        box-shadow:
+            0 14px 30px rgba(0,0,0,0.7),
+            0 0 0 1px rgba(130,197,0,0.25);
+
+        transition: 0.2s ease-out;
+        overflow: hidden;
+    }
+
+    .menu-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, var(--accent-glow), transparent 60%);
+        opacity: 0;
+        transition: 0.2s ease-out;
+    }
+
+    .menu-btn:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        box-shadow:
+            0 20px 40px rgba(0,0,0,0.85),
+            0 0 0 1px var(--accent);
+    }
+
+    .menu-btn:hover::before {
+        opacity: 1;
+    }
+
+    .btn-main {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .btn-title {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .btn-sub {
+        font-size: 0.78rem;
+        color: var(--text-sub);
+    }
+
+    .btn-pill {
+        min-width: 82px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #0f172a;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        box-shadow: 0 10px 24px rgba(130,197,0,0.55);
+    }
+
+    /* تنظیمات اضافی برای صفحه‌های خیلی کوچک (مثلاً ۳۲۰px) */
+    @media (max-width: 400px) {
+        .shell {
+            padding: 12px;
+        }
+        .card {
+            padding: 20px 16px;
+        }
+        .btn-pill {
+            min-width: 70px;
+            font-size: 0.7rem;
+        }
+        .btn-title {
+            font-size: 0.95rem;
+        }
+        .btn-sub {
+            font-size: 0.72rem;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="shell">
+    <div class="card">
+
+        <div class="logo-wrap">
+            <img src="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png" alt="لوگو">
+        </div>
+
+        <div class="title">انتخاب منبع</div>
+        <div class="subtitle">یکی از مسیرهای زیر را برای ادامه انتخاب کنید</div>
+
+        <div class="btn-group">
+
+            <a href="A/" class="menu-btn">
+                <div class="btn-main">
+                    <div class="btn-title">نمونه سوالات</div>
+                    <div class="btn-sub">ورود به بخش نمونه سوالات</div>
+                </div>
+                <div class="btn-pill">➜ مشاهده</div>
+            </a>
+
+            <a href="B/" class="menu-btn">
+                <div class="btn-main">
+                    <div class="btn-title">جزوات</div>
+                    <div class="btn-sub">ورود به بخش جزوات</div>
+                </div>
+                <div class="btn-pill"> ➜ مشاهده</div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
