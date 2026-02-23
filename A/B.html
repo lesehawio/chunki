@@ -231,57 +231,54 @@ button:hover{transform:scale(1.03);}
 
 // تشخیصی
 const diagnostic = [
-  {en:"___ am ready.",fa:"من آماده‌ام.",pr:"آی اَم رِدی",opts:["I","he","they"],answer:"I"},
-  {en:"She _ happy.",fa:"او خوشحال است.",pr:"شی ایز هَپی",opts:["is","go","have"],answer:"is"},
-  {en:"We _ together.",fa:"ما با هم کار می‌کنیم.",pr:"وی وُرک",opts:["work","go","take"],answer:"work"},
-  {en:"They _ here.",fa:"آنها اینجا هستند.",pr:"دِی آر هیر",opts:["are","do","make"],answer:"are"},
-  {en:"I _ a car.",fa:"من یک ماشین دارم.",pr:"آی هَو",opts:["have","go","take"],answer:"have"},
-  {en:"He _ to work.",fa:"او به کار می‌رود.",pr:"هی گوز",opts:["go","come","give"],answer:"go"},
-  {en:"She _ me.",fa:"او مرا دوست دارد.",pr:"شی لایک",opts:["like","know","need"],answer:"like"},
-  {en:"We ___ English.",fa:"ما انگلیسی یاد می‌گیریم.",pr:"وی نو",opts:["know","think","give"],answer:"know"}
+  {en:"This is my ___.",fa:"این مادر من است.",pr:"دیس ایز مای مادِر",opts:["mother","uncle","house"],answer:"mother"},
+  {en:"He is my ___.",fa:"او پدر من است.",pr:"هی ایز مای فادِر",opts:["father","cousin","home"],answer:"father"},
+  {en:"She is my ___.",fa:"او خواهر من است.",pr:"شی ایز مای سیستِر",opts:["sister","aunt","relationship"],answer:"sister"},
+  {en:"He is my ___.",fa:"او برادر من است.",pr:"هی ایز مای برادِر",opts:["brother","uncle","relative"],answer:"brother"},
+  {en:"This is my ___.",fa:"این خانه من است.",pr:"دیس ایز مای هوم",opts:["home","father","cousin"],answer:"home"},
+  {en:"They are my ___.",fa:"آنها فرزندان من هستند.",pr:"دِی آر مای چیلدرن",opts:["children","parent","uncle"],answer:"children"},
+  {en:"She is my ___.",fa:"او همسر من است.",pr:"شی ایز مای وایف",opts:["wife","aunt","mother"],answer:"wife"},
+  {en:"He is my ___.",fa:"او شوهر من است.",pr:"هی ایز مای هازبند",opts:["husband","brother","cousin"],answer:"husband"}
 ];
 
 
 // جمله‌سازی
 const combine = [
-  {words:["ready","I","am"],fa:"من آماده‌ام.",pr:"آی اَم رِدی",answer:"I am ready"},
-  {words:["work","we"],fa:"ما کار می‌کنیم.",pr:"وی وُرک",answer:"we work"},
-  {words:["live","I","here"],fa:"من اینجا زندگی می‌کنم.",pr:"آی لیو هیر",answer:"I live here"},
-  {words:["they","happy","are"],fa:"آنها خوشحال هستند.",pr:"دِی آر هَپی",answer:"they are happy"},
-  {words:["I","you","like"],fa:"من تو را دوست دارم.",pr:"آی یو لایک",answer:"I like you"},
-  {words:["we","go","now"],fa:"ما الان می‌رویم.",pr:"وی گو ناو",answer:"we go now"},
-  {words:["she","work"],fa:"او کار می‌کند.",pr:"شی وُرک",answer:"she works"},
-  {words:["he","come","here"],fa:"او به اینجا می‌آید.",pr:"هی کام هیر",answer:"he comes here"}
+  {words:["my","mother","is","she"],fa:"او مادر من است.",pr:"شی ایز مای مادِر",answer:"she is my mother"},
+  {words:["is","father","my","he"],fa:"او پدر من است.",pr:"هی ایز مای فادِر",answer:"he is my father"},
+  {words:["my","this","home","is"],fa:"این خانه من است.",pr:"دیس ایز مای هوم",answer:"this is my home"},
+  {words:["are","they","children","my"],fa:"آنها فرزندان من هستند.",pr:"دِی آر مای چیلدرن",answer:"they are my children"},
+  {words:["my","wife","is","she"],fa:"او همسر من است.",pr:"شی ایز مای وایف",answer:"she is my wife"},
+  {words:["my","husband","he","is"],fa:"او شوهر من است.",pr:"هی ایز مای هازبند",answer:"he is my husband"},
+  {words:["my","brother","is","he"],fa:"او برادر من است.",pr:"هی ایز مای برادِر",answer:"he is my brother"},
+  {words:["my","sister","is","she"],fa:"او خواهر من است.",pr:"شی ایز مای سیستِر",answer:"she is my sister"}
 ];
 
 
 // حدس‌زدن نوع ۱
 const guessMeaning = [
-  {q:"کدام کلمه معنی «من» است؟",opts:["I","you","they"],fa:"من",pr:"آی",answer:"I"},
-  {q:"کدام کلمه معنی «ما» است؟",opts:["we","he","she"],fa:"ما",pr:"وی",answer:"we"},
-  {q:"کدام کلمه معنی «آنها» است؟",opts:["they","it","you"],fa:"آنها",pr:"دِی",answer:"they"},
-  {q:"کدام کلمه معنی «داشتن» است؟",opts:["have","go","make"],fa:"داشتن",pr:"هَو",answer:"have"},
-  {q:"کدام کلمه معنی «رفتن» است؟",opts:["go","come","take"],fa:"رفتن",pr:"گو",answer:"go"},
-  {q:"کدام کلمه معنی «دادن» است؟",opts:["give","get","want"],fa:"دادن",pr:"گیو",answer:"give"},
-  {q:"کدام کلمه معنی «فکر کردن» است؟",opts:["think","know","live"],fa:"فکر کردن",pr:"تینک",answer:"think"},
-  {q:"کدام کلمه معنی «زندگی کردن» است؟",opts:["live","work","make"],fa:"زندگی کردن",pr:"لیو",answer:"live"},
-  {q:"کدام کلمه معنی «بله» است؟",opts:["yes","no","not"],fa:"بله",pr:"یِس",answer:"yes"}
+  {q:"کدام کلمه معنی «مادر» است؟",opts:["mother","father","aunt"],fa:"مادر",pr:"مادِر",answer:"mother"},
+  {q:"کدام کلمه معنی «پدر» است؟",opts:["father","brother","uncle"],fa:"پدر",pr:"فادِر",answer:"father"},
+  {q:"کدام کلمه معنی «خواهر» است؟",opts:["sister","mother","cousin"],fa:"خواهر",pr:"سیستِر",answer:"sister"},
+  {q:"کدام کلمه معنی «برادر» است؟",opts:["brother","father","uncle"],fa:"برادر",pr:"برادِر",answer:"brother"},
+  {q:"کدام کلمه معنی «خانه» است؟",opts:["home","family","relative"],fa:"خانه",pr:"هوم",answer:"home"},
+  {q:"کدام کلمه معنی «فرزندان» است؟",opts:["children","child","parent"],fa:"فرزندان",pr:"چیلدرن",answer:"children"},
+  {q:"کدام کلمه معنی «همسر» است؟",opts:["wife","aunt","sister"],fa:"همسر",pr:"وایف",answer:"wife"},
+  {q:"کدام کلمه معنی «شوهر» است؟",opts:["husband","brother","father"],fa:"شوهر",pr:"هازبند",answer:"husband"}
 ];
 
 
 // حدس‌زدن نوع ۲
 const guessWord = [
-  {q:"معنی «you» چیست؟",opts:["تو","ما","او"],fa:"تو",pr:"یو",answer:"تو"},
-  {q:"معنی «he» چیست؟",opts:["او","آنها","من"],fa:"او",pr:"هی",answer:"او"},
-  {q:"معنی «she» چیست؟",opts:["او","تو","ما"],fa:"او",pr:"شی",answer:"او"},
-  {q:"معنی «it» چیست؟",opts:["آن","او","ما"],fa:"آن",pr:"ایت",answer:"آن"},
-  {q:"معنی «do» چیست؟",opts:["کردن","رفتن","داشتن"],fa:"کردن",pr:"دو",answer:"کردن"},
-  {q:"معنی «make» چیست؟",opts:["ساختن","دادن","گرفتن"],fa:"ساختن",pr:"مِیک",answer:"ساختن"},
-  {q:"معنی «get» چیست؟",opts:["گرفتن","دادن","خواستن"],fa:"گرفتن",pr:"گِت",answer:"گرفتن"},
-  {q:"معنی «want» چیست؟",opts:["خواستن","نیاز داشتن","دوست داشتن"],fa:"خواستن",pr:"وانت",answer:"خواستن"},
-  {q:"معنی «need» چیست؟",opts:["نیاز داشتن","دانستن","فکر کردن"],fa:"نیاز داشتن",pr:"نید",answer:"نیاز داشتن"}
+  {q:"معنی «family» چیست؟",opts:["خانواده","خانه","رابطه"],fa:"خانواده",pr:"فامیلی",answer:"خانواده"},
+  {q:"معنی «uncle» چیست؟",opts:["عمو / دایی","پدر","برادر"],fa:"عمو / دایی",pr:"آنکِل",answer:"عمو / دایی"},
+  {q:"معنی «aunt» چیست؟",opts:["عمه / خاله","مادر","خواهر"],fa:"عمه / خاله",pr:"آنت",answer:"عمه / خاله"},
+  {q:"معنی «cousin» چیست؟",opts:["پسرعمو / دخترعمو","برادر","دوست"],fa:"پسرعمو / دخترعمو",pr:"کازن",answer:"پسرعمو / دخترعمو"},
+  {q:"معنی «relative» چیست؟",opts:["خویشاوند","دوست","همکار"],fa:"خویشاوند",pr:"رِلِتیو",answer:"خویشاوند"},
+  {q:"معنی «house» چیست؟",opts:["خانه","خانواده","اتاق"],fa:"خانه",pr:"هاوس",answer:"خانه"},
+  {q:"معنی «marriage» چیست؟",opts:["ازدواج","رابطه","خانواده"],fa:"ازدواج",pr:"مَرِج",answer:"ازدواج"},
+  {q:"معنی «relationship» چیست؟",opts:["رابطه","ازدواج","دوستی"],fa:"رابطه",pr:"رِلِیشِن‌شیپ",answer:"رابطه"}
 ];
-
 // ترتیب نوع سؤال‌ها
 const sequence = ["diagnostic","combine","guessMeaning","guessWord"];
 
