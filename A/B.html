@@ -231,53 +231,46 @@ button:hover{transform:scale(1.03);}
 
 // تشخیصی
 const diagnostic = [
-  {en:"This is my ___.",fa:"این مادر من است.",pr:"دیس ایز مای مادِر",opts:["mother","uncle","house"],answer:"mother"},
-  {en:"He is my ___.",fa:"او پدر من است.",pr:"هی ایز مای فادِر",opts:["father","cousin","home"],answer:"father"},
-  {en:"She is my ___.",fa:"او خواهر من است.",pr:"شی ایز مای سیستِر",opts:["sister","aunt","relationship"],answer:"sister"},
-  {en:"He is my ___.",fa:"او برادر من است.",pr:"هی ایز مای برادِر",opts:["brother","uncle","relative"],answer:"brother"},
-  {en:"This is my ___.",fa:"این خانه من است.",pr:"دیس ایز مای هوم",opts:["home","father","cousin"],answer:"home"},
-  {en:"They are my ___.",fa:"آنها فرزندان من هستند.",pr:"دِی آر مای چیلدرن",opts:["children","parent","uncle"],answer:"children"},
-  {en:"She is my ___.",fa:"او همسر من است.",pr:"شی ایز مای وایف",opts:["wife","aunt","mother"],answer:"wife"},
-  {en:"He is my ___.",fa:"او شوهر من است.",pr:"هی ایز مای هازبند",opts:["husband","brother","cousin"],answer:"husband"}
+  {en:"I am very busy ___.",fa:"من امروز خیلی سرم هستم.",pr:"آی اَم وَری بیزی تُدِی",opts:["today","tomorrow","yesterday"],answer:"today"},
+  {en:"See you ___.",fa:"فردا می‌بینمت.",pr:"سی یو تُمورو",opts:["tomorrow","today","now"],answer:"tomorrow"},
+  {en:"I woke up ___.",fa:"من امروز صبح زود بیدار شدم.",pr:"آی ووک آپ اِرلی دیس مورنینگ",opts:["early","late","now"],answer:"early"},
+  {en:"We can go there ___.",fa:"ما می‌توانیم بعداً به آنجا برویم.",pr:"وی کَن گو دِر لِیتِر",opts:["later","soon","now"],answer:"later"},
+  {en:"I will finish my work ___.",fa:"کارم را به زودی تمام می‌کنم.",pr:"آی ویل فینیش مای وُرک سُون",opts:["soon","later","never"],answer:"soon"},
+  {en:"I ___. drink coffee",fa:"من معمولاً قهوه می‌نوشم.",pr:"آی یووْژوالی دْرینک کافی",opts:["usually","always","sometimes"],answer:"usually"},
+  {en:"Please call me ___. the meeting",fa:"لطفاً بعد از جلسه با من تماس بگیر.",pr:"پلیز کال می اَفتِر دی میتینگ",opts:["after","before","now"],answer:"after"}
 ];
 
 
 // جمله‌سازی
 const combine = [
-  {words:["my","mother","is","she"],fa:"او مادر من است.",pr:"شی ایز مای مادِر",answer:"she is my mother"},
-  {words:["is","father","my","he"],fa:"او پدر من است.",pr:"هی ایز مای فادِر",answer:"he is my father"},
-  {words:["my","this","home","is"],fa:"این خانه من است.",pr:"دیس ایز مای هوم",answer:"this is my home"},
-  {words:["are","they","children","my"],fa:"آنها فرزندان من هستند.",pr:"دِی آر مای چیلدرن",answer:"they are my children"},
-  {words:["my","wife","is","she"],fa:"او همسر من است.",pr:"شی ایز مای وایف",answer:"she is my wife"},
-  {words:["my","husband","he","is"],fa:"او شوهر من است.",pr:"هی ایز مای هازبند",answer:"he is my husband"},
-  {words:["my","brother","is","he"],fa:"او برادر من است.",pr:"هی ایز مای برادِر",answer:"he is my brother"},
-  {words:["my","sister","is","she"],fa:"او خواهر من است.",pr:"شی ایز مای سیستِر",answer:"she is my sister"}
-];
 
+  {words:["yesterday","was","busy","I"],fa:"من دیروز شلوغ بودم.",pr:"آی واز بیزی یِستِردِی",answer:"i was busy yesterday"},
+  {words:["morning","every","run","I"],fa:"من هر صبح می‌دوم.",pr:"آی ران اِوری مورنینگ",answer:"i run every morning"},
+  {words:["night","study","at","I"],fa:"من شب درس می‌خوانم.",pr:"آی اِستادی اَت نایت",answer:"i study at night"},
+  {words:["never","smoke","I"],fa:"من هرگز سیگار نمی‌کشم.",pr:"آی نِوِر اِسمُوک",answer:"i never smoke"},
+  {words:["start","work","I","soon"],fa:"من به زودی کار را شروع می‌کنم.",pr:"آی اِستارت وُرک سُون",answer:"i start work soon"},
+  {words:["finish","book","I","night","at"],fa:"من کتاب را شب تمام می‌کنم.",pr:"آی فینیش دِ بوک اَت نایت",answer:"i finish the book at night"}
+];
 
 // حدس‌زدن نوع ۱
 const guessMeaning = [
-  {q:"کدام کلمه معنی «مادر» است؟",opts:["mother","father","aunt"],fa:"مادر",pr:"مادِر",answer:"mother"},
-  {q:"کدام کلمه معنی «پدر» است؟",opts:["father","brother","uncle"],fa:"پدر",pr:"فادِر",answer:"father"},
-  {q:"کدام کلمه معنی «خواهر» است؟",opts:["sister","mother","cousin"],fa:"خواهر",pr:"سیستِر",answer:"sister"},
-  {q:"کدام کلمه معنی «برادر» است؟",opts:["brother","father","uncle"],fa:"برادر",pr:"برادِر",answer:"brother"},
-  {q:"کدام کلمه معنی «خانه» است؟",opts:["home","family","relative"],fa:"خانه",pr:"هوم",answer:"home"},
-  {q:"کدام کلمه معنی «فرزندان» است؟",opts:["children","child","parent"],fa:"فرزندان",pr:"چیلدرن",answer:"children"},
-  {q:"کدام کلمه معنی «همسر» است؟",opts:["wife","aunt","sister"],fa:"همسر",pr:"وایف",answer:"wife"},
-  {q:"کدام کلمه معنی «شوهر» است؟",opts:["husband","brother","father"],fa:"شوهر",pr:"هازبند",answer:"husband"}
+  {q:"کدام کلمه معنی «حالا» است؟",opts:["now","late","soon"],fa:"حالا",pr:"ناو",answer:"now"},
+  {q:"کدام کلمه معنی «دیر» است؟",opts:["late","early","soon"],fa:"دیر",pr:"لِیت",answer:"late"},
+  {q:"کدام کلمه معنی «بعد از ظهر» است؟",opts:["afternoon","morning","evening"],fa:"بعد از ظهر",pr:"اَفتِرنون",answer:"afternoon"},
+  {q:"کدام کلمه معنی «عصر» است؟",opts:["evening","night","morning"],fa:"عصر",pr:"ایوْنینگ",answer:"evening"},
+  {q:"کدام کلمه معنی «همیشه» است؟",opts:["always","sometimes","never"],fa:"همیشه",pr:"اُلویز",answer:"always"},
+  {q:"کدام کلمه معنی «گاهی» است؟",opts:["sometimes","always","never"],fa:"گاهی",pr:"سامتایمز",answer:"sometimes"}
 ];
 
 
 // حدس‌زدن نوع ۲
 const guessWord = [
-  {q:"معنی «family» چیست؟",opts:["خانواده","خانه","رابطه"],fa:"خانواده",pr:"فامیلی",answer:"خانواده"},
-  {q:"معنی «uncle» چیست؟",opts:["عمو / دایی","پدر","برادر"],fa:"عمو / دایی",pr:"آنکِل",answer:"عمو / دایی"},
-  {q:"معنی «aunt» چیست؟",opts:["عمه / خاله","مادر","خواهر"],fa:"عمه / خاله",pr:"آنت",answer:"عمه / خاله"},
-  {q:"معنی «cousin» چیست؟",opts:["پسرعمو / دخترعمو","برادر","دوست"],fa:"پسرعمو / دخترعمو",pr:"کازن",answer:"پسرعمو / دخترعمو"},
-  {q:"معنی «relative» چیست؟",opts:["خویشاوند","دوست","همکار"],fa:"خویشاوند",pr:"رِلِتیو",answer:"خویشاوند"},
-  {q:"معنی «house» چیست؟",opts:["خانه","خانواده","اتاق"],fa:"خانه",pr:"هاوس",answer:"خانه"},
-  {q:"معنی «marriage» چیست؟",opts:["ازدواج","رابطه","خانواده"],fa:"ازدواج",pr:"مَرِج",answer:"ازدواج"},
-  {q:"معنی «relationship» چیست؟",opts:["رابطه","ازدواج","دوستی"],fa:"رابطه",pr:"رِلِیشِن‌شیپ",answer:"رابطه"}
+  {q:"معنی «week» چیست؟",opts:["هفته","ماه","سال"],fa:"هفته",pr:"ویک",answer:"هفته"},
+  {q:"معنی «month» چیست؟",opts:["ماه","هفته","سال"],fa:"ماه",pr:"مَانث",answer:"ماه"},
+  {q:"معنی «year» چیست؟",opts:["سال","ماه","هفته"],fa:"سال",pr:"ییر",answer:"سال"},
+  {q:"معنی «hour» چیست؟",opts:["ساعت","دقیقه","روز"],fa:"ساعت",pr:"آوِر",answer:"ساعت"},
+  {q:"معنی «minute» چیست؟",opts:["دقیقه","ساعت","ثانیه"],fa:"دقیقه",pr:"مینیت",answer:"دقیقه"},
+  {q:"معنی «before» چیست؟",opts:["قبل","بعد","حین"],fa:"قبل",pr:"بیفور",answer:"قبل"}
 ];
 // ترتیب نوع سؤال‌ها
 const sequence = ["diagnostic","combine","guessMeaning","guessWord"];
