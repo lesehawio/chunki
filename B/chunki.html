@@ -371,298 +371,123 @@ body.light .result-card{
 const data = {
   pairs: [
 {
-noun: {w: "appointment", fa: "قرار ملاقات", pr: "اپوینتمنت"},
-verb: {w: "schedule", fa: "تنظیم کردن", pr: "سکجول"},
-chunk: "schedule an appointment",
-chunkFa: "تنظیم قرار ملاقات"
+noun: {w: "course", fa: "دوره", pr: "کورس"},
+verb: {w: "take", fa: "گذراندن", pr: "تِیک"},
+chunk: "take a course",
+chunkFa: "گذراندن دوره"
 },
 
 {
-noun: {w: "attendance", fa: "حضور و غیاب", pr: "اتندنس"},
-verb: {w: "take", fa: "گرفتن", pr: "تِیک"},
-chunk: "take attendance",
-chunkFa: "حضور و غیاب گرفتن"
-},
-
-{
-noun: {w: "feedback", fa: "بازخورد", pr: "فیدبک"},
-verb: {w: "give", fa: "دادن", pr: "گیو"},
-chunk: "give feedback",
-chunkFa: "بازخورد دادن"
-},
-
-{
-noun: {w: "meeting", fa: "جلسه", pr: "میتینگ"},
-verb: {w: "attend", fa: "شرکت کردن", pr: "اتند"},
-chunk: "attend a meeting",
-chunkFa: "در جلسه شرکت کردن"
-},
-
-{
-noun: {w: "task", fa: "وظیفه", pr: "تسک"},
-verb: {w: "assign", fa: "واگذار کردن", pr: "اساین"},
-chunk: "assign a task",
-chunkFa: "واگذاری کار"
-},
-
-{
-noun: {w: "mistakes", fa: "اشتباهات", pr: "میستیکس"},
-verb: {w: "fix", fa: "درست کردن", pr: "فیکس"},
-chunk: "fix mistakes",
-chunkFa: "اصلاح اشتباهات"
-},
-
-{
-noun: {w: "proposal", fa: "پیشنهاد", pr: "پروپوزال"},
-verb: {w: "submit", fa: "ارسال کردن", pr: "سابمیت"},
-chunk: "submit a proposal",
-chunkFa: "ارسال پیشنهاد"
-},
-
-{
-noun: {w: "research", fa: "تحقیق", pr: "ریسرچ"},
-verb: {w: "do", fa: "انجام دادن", pr: "دو"},
-chunk: "do research",
-chunkFa: "تحقیق کردن"
-},
-
-{
-noun: {w: "data", fa: "داده", pr: "دیتا"},
-verb: {w: "analyze", fa: "تحلیل کردن", pr: "انالایز"},
-chunk: "analyze data",
-chunkFa: "تحلیل داده"
-},
-
-{
-noun: {w: "essay", fa: "مقاله", pr: "اسِی"},
-verb: {w: "write", fa: "نوشتن", pr: "رایت"},
-chunk: "write an essay",
-chunkFa: "نوشتن مقاله"
-},
-
-{
-noun: {w: "vocabulary", fa: "لغات", pr: "ووکبیولری"},
-verb: {w: "learn", fa: "یاد گرفتن", pr: "لِرن"},
-chunk: "learn vocabulary",
-chunkFa: "یاد گرفتن لغات"
-},
-
-{
-noun: {w: "chapter", fa: "فصل", pr: "چپتر"},
-verb: {w: "review", fa: "مرور کردن", pr: "ریویو"},
-chunk: "review a chapter",
-chunkFa: "مرور یک فصل"
-},
-
-{
-noun: {w: "exercises", fa: "تمرین‌ها", pr: "اکسرسایزز"},
-verb: {w: "do", fa: "انجام دادن", pr: "دو"},
-chunk: "do exercises",
-chunkFa: "انجام تمرین‌ها"
-},
-
-{
-noun: {w: "notes", fa: "یادداشت", pr: "نوتس"},
-verb: {w: "take", fa: "برداشتن", pr: "تیک"},
-chunk: "take notes",
-chunkFa: "یادداشت برداری"
-},
-
-{
-noun: {w: "performance", fa: "عملکرد", pr: "پرفورمنس"},
-verb: {w: "evaluate", fa: "ارزیابی کردن", pr: "اِولیویت"},
-chunk: "evaluate performance",
-chunkFa: "ارزیابی عملکرد"
-},
-
-{
-noun: {w: "topic", fa: "موضوع", pr: "تاپیک"},
-verb: {w: "discuss", fa: "بحث کردن", pr: "دیسکاس"},
-chunk: "discuss a topic",
-chunkFa: "بحث درباره موضوع"
-},
-
-{
-noun: {w: "concept", fa: "مفهوم", pr: "کانسپت"},
-verb: {w: "explain", fa: "توضیح دادن", pr: "اکسپلین"},
-chunk: "explain a concept",
-chunkFa: "توضیح مفهوم"
-},
-
-{
-noun: {w: "questions", fa: "سوالات", pr: "کوئسچنز"},
-verb: {w: "ask", fa: "پرسیدن", pr: "اسک"},
-chunk: "ask questions",
-chunkFa: "سوال پرسیدن"
-},
-
-{
-noun: {w: "office hours", fa: "ساعات مشاوره", pr: "آفیس آورز"},
-verb: {w: "go to", fa: "رفتن به", pr: "گو تو"},
-chunk: "go to office hours",
-chunkFa: "رفتن به ساعات مشاوره"
-},
-
-{
-noun: {w: "coursework", fa: "کارهای درسی", pr: "کورس‌ورک"},
-verb: {w: "turn in", fa: "تحویل دادن", pr: "ترن این"},
-chunk: "turn in coursework",
-chunkFa: "تحویل کار درسی"
-},
-
-{
-noun: {w: "instructions", fa: "دستورالعمل", pr: "اینستراکشنز"},
-verb: {w: "follow", fa: "دنبال کردن", pr: "فالو"},
-chunk: "follow instructions",
-chunkFa: "دنبال کردن دستورالعمل"
+noun: {w: "class", fa: "کلاس", pr: "کلس"},
+verb: {w: "participate in", fa: "شرکت کردن در", pr: "پارتیسیپیت این"},
+chunk: "participate in class",
+chunkFa: "شرکت در کلاس"
 },
 
 {
 noun: {w: "exam", fa: "امتحان", pr: "اگزَم"},
-verb: {w: "take", fa: "دادن", pr: "تِیک"},
-chunk: "take an exam",
-chunkFa: "امتحان دادن"
+verb: {w: "study for", fa: "مطالعه برای", pr: "استادی فور"},
+chunk: "study for an exam",
+chunkFa: "مطالعه برای امتحان"
 },
 
 {
-noun: {w: "study materials", fa: "منابع مطالعه", pr: "استادی متریالز"},
-verb: {w: "prepare", fa: "آماده کردن", pr: "پرپِر"},
-chunk: "prepare study materials",
-chunkFa: "آماده کردن منابع"
+noun: {w: "questions", fa: "سوالات", pr: "کوئسچنز"},
+verb: {w: "answer", fa: "پاسخ دادن", pr: "انسر"},
+chunk: "answer questions",
+chunkFa: "پاسخ دادن به سوالات"
 },
 
 {
-noun: {w: "group work", fa: "کار گروهی", pr: "گروپ ورک"},
-verb: {w: "work on", fa: "کار کردن روی", pr: "ورک آن"},
-chunk: "work on group work",
-chunkFa: "کار روی کار گروهی"
+noun: {w: "results", fa: "نتایج", pr: "ریزالتس"},
+verb: {w: "discuss", fa: "بحث کردن", pr: "دیسکاس"},
+chunk: "discuss results",
+chunkFa: "بحث درباره نتایج"
 },
 
 {
-noun: {w: "quiz", fa: "کوئیز", pr: "کویز"},
-verb: {w: "take", fa: "دادن", pr: "تِیک"},
-chunk: "take a quiz",
-chunkFa: "دادن کوئیز"
+noun: {w: "experiment", fa: "آزمایش", pr: "اکسپریمنت"},
+verb: {w: "run", fa: "انجام دادن", pr: "ران"},
+chunk: "run an experiment",
+chunkFa: "انجام آزمایش"
+},
+
+{
+noun: {w: "summary", fa: "خلاصه", pr: "سامری"},
+verb: {w: "write", fa: "نوشتن", pr: "رایت"},
+chunk: "write a summary",
+chunkFa: "نوشتن خلاصه"
+},
+
+{
+noun: {w: "report", fa: "گزارش", pr: "ریپورت"},
+verb: {w: "write", fa: "نوشتن", pr: "رایت"},
+chunk: "write a report",
+chunkFa: "نوشتن گزارش"
+},
+
+{
+noun: {w: "advice", fa: "مشاوره", pr: "ادوایس"},
+verb: {w: "ask for", fa: "درخواست کردن", pr: "اسک فور"},
+chunk: "ask for advice",
+chunkFa: "درخواست مشاوره"
+},
+
+{
+noun: {w: "research", fa: "تحقیق", pr: "ریسرچ"},
+verb: {w: "take part in", fa: "شرکت کردن در", pr: "تیک پارت این"},
+chunk: "take part in research",
+chunkFa: "شرکت در تحقیق"
 },
 
 {
 noun: {w: "project", fa: "پروژه", pr: "پراجکت"},
-verb: {w: "present", fa: "ارائه دادن", pr: "پرزنت"},
-chunk: "present a project",
-chunkFa: "ارائه پروژه"
+verb: {w: "plan", fa: "برنامه‌ریزی کردن", pr: "پلن"},
+chunk: "plan a project",
+chunkFa: "برنامه‌ریزی پروژه"
 },
 
 {
-noun: {w: "discussion", fa: "بحث", pr: "دیسکاشن"},
-verb: {w: "lead", fa: "هدایت کردن", pr: "لید"},
-chunk: "lead a discussion",
-chunkFa: "هدایت بحث"
-},
-
-{
-noun: {w: "notes", fa: "یادداشت", pr: "نوتس"},
-verb: {w: "write", fa: "نوشتن", pr: "رایت"},
-chunk: "write notes",
-chunkFa: "نوشتن یادداشت"
-},
-
-{
-noun: {w: "schedule", fa: "برنامه زمانی", pr: "سکجول"},
-verb: {w: "set", fa: "تنظیم کردن", pr: "سِت"},
-chunk: "set a schedule",
-chunkFa: "تنظیم برنامه"
-},
-
-{
-noun: {w: "workshop", fa: "کارگاه", pr: "ورکشاپ"},
+noun: {w: "training", fa: "آموزش", pr: "ترینینگ"},
 verb: {w: "attend", fa: "شرکت کردن", pr: "اتند"},
-chunk: "attend a workshop",
-chunkFa: "شرکت در کارگاه"
+chunk: "attend training",
+chunkFa: "شرکت در آموزش"
 },
 
 {
-noun: {w: "homework", fa: "تکلیف", pr: "هوم‌ورک"},
-verb: {w: "check", fa: "بررسی کردن", pr: "چک"},
-chunk: "check homework",
-chunkFa: "بررسی تکلیف"
+noun: {w: "slides", fa: "اسلایدها", pr: "اسلایدز"},
+verb: {w: "prepare", fa: "آماده کردن", pr: "پرپِر"},
+chunk: "prepare slides",
+chunkFa: "آماده کردن اسلاید"
 },
 
 {
-noun: {w: "plan", fa: "برنامه", pr: "پلن"},
-verb: {w: "make", fa: "ساختن", pr: "مِیک"},
-chunk: "make a plan",
-chunkFa: "برنامه‌ریزی کردن"
+noun: {w: "feedback", fa: "بازخورد", pr: "فیدبک"},
+verb: {w: "review", fa: "بررسی کردن", pr: "ریویو"},
+chunk: "review feedback",
+chunkFa: "مرور بازخورد"
 },
 
 {
-noun: {w: "notes", fa: "یادداشت", pr: "نوتس"},
-verb: {w: "review", fa: "مرور کردن", pr: "ریویو"},
-chunk: "review notes",
-chunkFa: "مرور یادداشت‌ها"
+noun: {w: "deadlines", fa: "ددلاین‌ها", pr: "ددلاینز"},
+verb: {w: "meet", fa: "رعایت کردن", pr: "میت"},
+chunk: "meet deadlines",
+chunkFa: "رعایت ددلاین"
 },
 
 {
-noun: {w: "tutorial", fa: "جلسه آموزشی", pr: "توتوریال"},
-verb: {w: "attend", fa: "شرکت کردن", pr: "اتند"},
-chunk: "attend a tutorial",
-chunkFa: "شرکت در جلسه آموزشی"
+noun: {w: "assignments", fa: "تکالیف", pr: "اساینمنتس"},
+verb: {w: "talk about", fa: "صحبت کردن درباره", pr: "تاک اباوت"},
+chunk: "talk about assignments",
+chunkFa: "صحبت درباره تکالیف"
 },
 
 {
-noun: {w: "essay", fa: "مقاله", pr: "اسِی"},
-verb: {w: "turn in", fa: "تحویل دادن", pr: "ترن این"},
-chunk: "turn in an essay",
-chunkFa: "تحویل مقاله"
-},
-
-{
-noun: {w: "clarification", fa: "شفاف‌سازی", pr: "کلریفیکیشن"},
-verb: {w: "ask for", fa: "درخواست کردن", pr: "اسک فور"},
-chunk: "ask for clarification",
-chunkFa: "درخواست توضیح بیشتر"
-},
-
-{
-noun: {w: "survey", fa: "نظرسنجی", pr: "سِروی"},
-verb: {w: "fill out", fa: "پر کردن", pr: "فیل آوت"},
-chunk: "fill out a survey",
-chunkFa: "پر کردن نظرسنجی"
-},
-
-{
-noun: {w: "manual", fa: "راهنما", pr: "منیوال"},
-verb: {w: "read", fa: "خواندن", pr: "رید"},
-chunk: "read a manual",
-chunkFa: "خواندن راهنما"
-},
-
-{
-noun: {w: "module", fa: "ماژول", pr: "ماجول"},
-verb: {w: "complete", fa: "کامل کردن", pr: "کامپلیت"},
-chunk: "complete a module",
-chunkFa: "تکمیل ماژول"
-},
-
-{
-noun: {w: "skills", fa: "مهارت‌ها", pr: "اسکیلز"},
-verb: {w: "practice", fa: "تمرین کردن", pr: "پرکتیس"},
-chunk: "practice skills",
-chunkFa: "تمرین مهارت‌ها"
-},
-
-{
-noun: {w: "assignment", fa: "تکلیف", pr: "اساینمنت"},
-verb: {w: "work on", fa: "کار کردن روی", pr: "ورک آن"},
-chunk: "work on an assignment",
-chunkFa: "کار روی تکلیف"
-},
-
-{
-noun: {w: "findings", fa: "یافته‌ها", pr: "فایندینگز"},
-verb: {w: "present", fa: "ارائه دادن", pr: "پرزنت"},
-chunk: "present findings",
-chunkFa: "ارائه نتایج"
-},
+noun: {w: "initiative", fa: "ابتکار عمل", pr: "اینیشیتیو"},
+verb: {w: "take", fa: "نشان دادن", pr: "تیک"},
+chunk: "take initiative",
+chunkFa: "ابتکار عمل نشان دادن"
+}
 
   ],
 
