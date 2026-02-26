@@ -206,7 +206,23 @@
         box-shadow: 0 10px 24px rgba(130,197,0,0.55);
     }
 
-</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6GF0XZY6BG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6GF0XZY6BG');
+
+  // وقتی صفحه لود شد، ثبت کن عباس وارد شده
+  window.addEventListener("load", function() {
+    gtag('event', 'section_enter', {
+      user_type: 'abbas'
+    });
+  });
+</script>
+    
 </head>
 
 <body>
