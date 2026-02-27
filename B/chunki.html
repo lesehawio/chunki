@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Chunk Cycle Pro</title>
+<title>English Chunk Cycle Pro – Health & Medicine</title>
 <link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
 
 <style>
@@ -336,7 +336,7 @@ body.light .result-card{
 
 <div class="container">
 
-  <h2>English Learning Game</h2>
+  <h2>Health & Medicine Phrases</h2>
 
   <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
@@ -370,125 +370,250 @@ body.light .result-card{
 /* ================= DATA ================= */
 const data = {
   pairs: [
-{
-noun: {w: "course", fa: "دوره", pr: "کورس"},
-verb: {w: "take", fa: "گذراندن", pr: "تِیک"},
-chunk: "take a course",
-chunkFa: "گذراندن دوره"
-},
-
-{
-noun: {w: "class", fa: "کلاس", pr: "کلس"},
-verb: {w: "participate in", fa: "شرکت کردن در", pr: "پارتیسیپیت این"},
-chunk: "participate in class",
-chunkFa: "شرکت در کلاس"
-},
-
-{
-noun: {w: "exam", fa: "امتحان", pr: "اگزَم"},
-verb: {w: "study for", fa: "مطالعه برای", pr: "استادی فور"},
-chunk: "study for an exam",
-chunkFa: "مطالعه برای امتحان"
-},
-
-{
-noun: {w: "questions", fa: "سوالات", pr: "کوئسچنز"},
-verb: {w: "answer", fa: "پاسخ دادن", pr: "انسر"},
-chunk: "answer questions",
-chunkFa: "پاسخ دادن به سوالات"
-},
-
-{
-noun: {w: "results", fa: "نتایج", pr: "ریزالتس"},
-verb: {w: "discuss", fa: "بحث کردن", pr: "دیسکاس"},
-chunk: "discuss results",
-chunkFa: "بحث درباره نتایج"
-},
-
-{
-noun: {w: "experiment", fa: "آزمایش", pr: "اکسپریمنت"},
-verb: {w: "run", fa: "انجام دادن", pr: "ران"},
-chunk: "run an experiment",
-chunkFa: "انجام آزمایش"
-},
-
-{
-noun: {w: "summary", fa: "خلاصه", pr: "سامری"},
-verb: {w: "write", fa: "نوشتن", pr: "رایت"},
-chunk: "write a summary",
-chunkFa: "نوشتن خلاصه"
-},
-
-{
-noun: {w: "report", fa: "گزارش", pr: "ریپورت"},
-verb: {w: "write", fa: "نوشتن", pr: "رایت"},
-chunk: "write a report",
-chunkFa: "نوشتن گزارش"
-},
-
-{
-noun: {w: "advice", fa: "مشاوره", pr: "ادوایس"},
-verb: {w: "ask for", fa: "درخواست کردن", pr: "اسک فور"},
-chunk: "ask for advice",
-chunkFa: "درخواست مشاوره"
-},
-
-{
-noun: {w: "research", fa: "تحقیق", pr: "ریسرچ"},
-verb: {w: "take part in", fa: "شرکت کردن در", pr: "تیک پارت این"},
-chunk: "take part in research",
-chunkFa: "شرکت در تحقیق"
-},
-
-{
-noun: {w: "project", fa: "پروژه", pr: "پراجکت"},
-verb: {w: "plan", fa: "برنامه‌ریزی کردن", pr: "پلن"},
-chunk: "plan a project",
-chunkFa: "برنامه‌ریزی پروژه"
-},
-
-{
-noun: {w: "training", fa: "آموزش", pr: "ترینینگ"},
-verb: {w: "attend", fa: "شرکت کردن", pr: "اتند"},
-chunk: "attend training",
-chunkFa: "شرکت در آموزش"
-},
-
-{
-noun: {w: "slides", fa: "اسلایدها", pr: "اسلایدز"},
-verb: {w: "prepare", fa: "آماده کردن", pr: "پرپِر"},
-chunk: "prepare slides",
-chunkFa: "آماده کردن اسلاید"
-},
-
-{
-noun: {w: "feedback", fa: "بازخورد", pr: "فیدبک"},
-verb: {w: "review", fa: "بررسی کردن", pr: "ریویو"},
-chunk: "review feedback",
-chunkFa: "مرور بازخورد"
-},
-
-{
-noun: {w: "deadlines", fa: "ددلاین‌ها", pr: "ددلاینز"},
-verb: {w: "meet", fa: "رعایت کردن", pr: "میت"},
-chunk: "meet deadlines",
-chunkFa: "رعایت ددلاین"
-},
-
-{
-noun: {w: "assignments", fa: "تکالیف", pr: "اساینمنتس"},
-verb: {w: "talk about", fa: "صحبت کردن درباره", pr: "تاک اباوت"},
-chunk: "talk about assignments",
-chunkFa: "صحبت درباره تکالیف"
-},
-
-{
-noun: {w: "initiative", fa: "ابتکار عمل", pr: "اینیشیتیو"},
-verb: {w: "take", fa: "نشان دادن", pr: "تیک"},
-chunk: "take initiative",
-chunkFa: "ابتکار عمل نشان دادن"
-}
-
+    // 🧠 پایه‌ترین‌ها
+    {
+      noun: {w: "headache", fa: "سردرد", pr: "هِدِیک"},
+      verb: {w: "have", fa: "داشتن", pr: "هاو"},
+      chunk: "have a headache",
+      chunkFa: "سردرد داشتن"
+    },
+    {
+      noun: {w: "cold", fa: "سرما", pr: "کُلد"},
+      verb: {w: "catch", fa: "خوردن", pr: "کَچ"},
+      chunk: "catch a cold",
+      chunkFa: "سرما خوردن"
+    },
+    {
+      noun: {w: "sick", fa: "مریض", pr: "سیک"},
+      verb: {w: "get", fa: "شدن", pr: "گِت"},
+      chunk: "get sick",
+      chunkFa: "مریض شدن"
+    },
+    {
+      noun: {w: "pain", fa: "درد", pr: "پِین"},
+      verb: {w: "feel", fa: "احساس کردن", pr: "فیل"},
+      chunk: "feel pain",
+      chunkFa: "احساس درد داشتن"
+    },
+    {
+      noun: {w: "fever", fa: "تب", pr: "فِیوِر"},
+      verb: {w: "have", fa: "داشتن", pr: "هاو"},
+      chunk: "have a fever",
+      chunkFa: "تب داشتن"
+    },
+    {
+      noun: {w: "medicine", fa: "دارو", pr: "مِدسِن"},
+      verb: {w: "take", fa: "خوردن", pr: "تِیک"},
+      chunk: "take medicine",
+      chunkFa: "دارو خوردن"
+    },
+    {
+      noun: {w: "doctor", fa: "دکتر", pr: "داکتَر"},
+      verb: {w: "see", fa: "رفتن به", pr: "سی"},
+      chunk: "see a doctor",
+      chunkFa: "دکتر رفتن"
+    },
+    {
+      noun: {w: "doctor", fa: "دکتر", pr: "داکتَر"},
+      verb: {w: "visit", fa: "مراجعه کردن به", pr: "ویزیت"},
+      chunk: "visit a doctor",
+      chunkFa: "مراجعه به دکتر"
+    },
+    {
+      noun: {w: "blood pressure", fa: "فشار خون", pr: "بلَد پِرِشر"},
+      verb: {w: "check", fa: "چک کردن", pr: "چِک"},
+      chunk: "check blood pressure",
+      chunkFa: "فشار خون چک کردن"
+    },
+    {
+      noun: {w: "temperature", fa: "دما", pr: "تِمپِرچِر"},
+      verb: {w: "measure", fa: "اندازه‌گیری کردن", pr: "مِژِر"},
+      chunk: "measure temperature",
+      chunkFa: "اندازه‌گیری دما"
+    },
+    // 💊 درمان و پزشکی
+    {
+      noun: {w: "pill", fa: "قرص", pr: "پیل"},
+      verb: {w: "take", fa: "خوردن", pr: "تِیک"},
+      chunk: "take a pill",
+      chunkFa: "قرص خوردن"
+    },
+    {
+      noun: {w: "treatment", fa: "درمان", pr: "تریت‌مِنت"},
+      verb: {w: "get", fa: "گرفتن", pr: "گِت"},
+      chunk: "get treatment",
+      chunkFa: "درمان گرفتن"
+    },
+    {
+      noun: {w: "treatment", fa: "درمان", pr: "تریت‌مِنت"},
+      verb: {w: "receive", fa: "دریافت کردن", pr: "ری‌سیو"},
+      chunk: "receive treatment",
+      chunkFa: "درمان دریافت کردن"
+    },
+    {
+      noun: {w: "treatment", fa: "درمان", pr: "تریت‌مِنت"},
+      verb: {w: "give", fa: "دادن", pr: "گیو"},
+      chunk: "give treatment",
+      chunkFa: "درمان دادن"
+    },
+    {
+      noun: {w: "medicine", fa: "دارو", pr: "مِدسِن"},
+      verb: {w: "prescribe", fa: "تجویز کردن", pr: "پریسکرایب"},
+      chunk: "prescribe medicine",
+      chunkFa: "دارو تجویز کردن"
+    },
+    {
+      noun: {w: "treatment", fa: "درمان", pr: "تریت‌مِنت"},
+      verb: {w: "follow", fa: "دنبال کردن", pr: "فالو"},
+      chunk: "follow a treatment",
+      chunkFa: "درمان را دنبال کردن"
+    },
+    {
+      noun: {w: "disease", fa: "بیماری", pr: "دی‌زیز"},
+      verb: {w: "treat", fa: "درمان کردن", pr: "تریت"},
+      chunk: "treat a disease",
+      chunkFa: "درمان بیماری"
+    },
+    {
+      noun: {w: "illness", fa: "بیماری", pr: "ایل‌نِس"},
+      verb: {w: "cure", fa: "کاملاً درمان کردن", pr: "کیور"},
+      chunk: "cure an illness",
+      chunkFa: "درمان کامل بیماری"
+    },
+    {
+      noun: {w: "pain", fa: "درد", pr: "پِین"},
+      verb: {w: "relieve", fa: "کاهش دادن", pr: "ری‌لیو"},
+      chunk: "relieve pain",
+      chunkFa: "کاهش درد"
+    },
+    {
+      noun: {w: "fever", fa: "تب", pr: "فِیوِر"},
+      verb: {w: "reduce", fa: "کاهش دادن", pr: "ری‌دوس"},
+      chunk: "reduce fever",
+      chunkFa: "کاهش تب"
+    },
+    // 🏥 مراجعه و معاینه
+    {
+      noun: {w: "appointment", fa: "وقت", pr: "اِپوینت‌مِنت"},
+      verb: {w: "make", fa: "گرفتن", pr: "مِیک"},
+      chunk: "make an appointment",
+      chunkFa: "وقت گرفتن"
+    },
+    {
+      noun: {w: "appointment", fa: "وقت", pr: "اِپوینت‌مِنت"},
+      verb: {w: "miss", fa: "از دست دادن", pr: "میس"},
+      chunk: "miss an appointment",
+      chunkFa: "وقت را از دست دادن"
+    },
+    {
+      noun: {w: "appointment", fa: "وقت", pr: "اِپوینت‌مِنت"},
+      verb: {w: "cancel", fa: "لغو کردن", pr: "کَنسِل"},
+      chunk: "cancel an appointment",
+      chunkFa: "لغو وقت"
+    },
+    {
+      noun: {w: "check-up", fa: "چکاپ", pr: "چک آپ"},
+      verb: {w: "do", fa: "انجام دادن", pr: "دو"},
+      chunk: "do a check-up",
+      chunkFa: "چکاپ انجام دادن"
+    },
+    {
+      noun: {w: "tests", fa: "آزمایش‌ها", pr: "تِستس"},
+      verb: {w: "run", fa: "گرفتن", pr: "ران"},
+      chunk: "run tests",
+      chunkFa: "آزمایش گرفتن"
+    },
+    {
+      noun: {w: "test", fa: "آزمایش", pr: "تِست"},
+      verb: {w: "take", fa: "دادن", pr: "تِیک"},
+      chunk: "take a test",
+      chunkFa: "آزمایش دادن"
+    },
+    {
+      noun: {w: "heart", fa: "قلب", pr: "هارت"},
+      verb: {w: "check", fa: "بررسی کردن", pr: "چِک"},
+      chunk: "check the heart",
+      chunkFa: "بررسی قلب"
+    },
+    {
+      noun: {w: "patient", fa: "بیمار", pr: "پِیشِنت"},
+      verb: {w: "examine", fa: "معاینه کردن", pr: "اِگزَمین"},
+      chunk: "examine a patient",
+      chunkFa: "معاینه بیمار"
+    },
+    {
+      noun: {w: "problem", fa: "مشکل", pr: "پرابلم"},
+      verb: {w: "diagnose", fa: "تشخیص دادن", pr: "دایَگنوز"},
+      chunk: "diagnose a problem",
+      chunkFa: "تشخیص مشکل"
+    },
+    {
+      noun: {w: "disease", fa: "بیماری", pr: "دی‌زیز"},
+      verb: {w: "detect", fa: "تشخیص دادن", pr: "دی‌تِکت"},
+      chunk: "detect a disease",
+      chunkFa: "تشخیص بیماری"
+    },
+    // 🦴 بدن و عملکرد
+    {
+      noun: {w: "bone", fa: "استخوان", pr: "بون"},
+      verb: {w: "break", fa: "شکستن", pr: "بریک"},
+      chunk: "break a bone",
+      chunkFa: "شکستن استخوان"
+    },
+    {
+      noun: {w: "back", fa: "کمر", pr: "بک"},
+      verb: {w: "hurt", fa: "آسیب زدن به", pr: "هُرت"},
+      chunk: "hurt your back",
+      chunkFa: "آسیب به کمر"
+    },
+    {
+      noun: {w: "muscle", fa: "عضله", pr: "ماسِل"},
+      verb: {w: "damage", fa: "آسیب زدن به", pr: "دَمِج"},
+      chunk: "damage a muscle",
+      chunkFa: "آسیب به عضله"
+    },
+    {
+      noun: {w: "muscle", fa: "عضله", pr: "ماسِل"},
+      verb: {w: "stretch", fa: "کش آمدن", pr: "اِسترچ"},
+      chunk: "stretch a muscle",
+      chunkFa: "کش آمدن عضله"
+    },
+    {
+      noun: {w: "muscle", fa: "عضله", pr: "ماسِل"},
+      verb: {w: "pull", fa: "کشیدگی", pr: "پول"},
+      chunk: "pull a muscle",
+      chunkFa: "کشیدگی عضله"
+    },
+    {
+      noun: {w: "weight", fa: "وزن", pr: "وِیت"},
+      verb: {w: "lose", fa: "کاهش دادن", pr: "لوز"},
+      chunk: "lose weight",
+      chunkFa: "کاهش وزن"
+    },
+    {
+      noun: {w: "weight", fa: "وزن", pr: "وِیت"},
+      verb: {w: "gain", fa: "افزایش دادن", pr: "گِین"},
+      chunk: "gain weight",
+      chunkFa: "افزایش وزن"
+    },
+    {
+      noun: {w: "muscle", fa: "عضله", pr: "ماسِل"},
+      verb: {w: "build", fa: "ساختن", pr: "بیلد"},
+      chunk: "build muscle",
+      chunkFa: "عضله ساختن"
+    },
+    {
+      noun: {w: "strength", fa: "قدرت", pr: "اِسترِنگث"},
+      verb: {w: "improve", fa: "افزایش دادن", pr: "ایم‌پروو"},
+      chunk: "improve strength",
+      chunkFa: "افزایش قدرت"
+    },
+    {
+      noun: {w: "energy", fa: "انرژی", pr: "اِنِرجی"},
+      verb: {w: "increase", fa: "افزایش دادن", pr: "این‌کریس"},
+      chunk: "increase energy",
+      chunkFa: "افزایش انرژی"
+    }
   ],
 
   stages: ["noun", "verb", "chunk"],
