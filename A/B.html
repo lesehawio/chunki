@@ -231,46 +231,46 @@ button:hover{transform:scale(1.03);}
 
 // تشخیصی
 const diagnostic = [
-  {en:"I am very busy ___.",fa:"من امروز خیلی سرم هستم.",pr:"آی اَم وَری بیزی تُدِی",opts:["today","tomorrow","yesterday"],answer:"today"},
-  {en:"See you ___.",fa:"فردا می‌بینمت.",pr:"سی یو تُمورو",opts:["tomorrow","today","now"],answer:"tomorrow"},
-  {en:"I woke up ___.",fa:"من امروز صبح زود بیدار شدم.",pr:"آی ووک آپ اِرلی دیس مورنینگ",opts:["early","late","now"],answer:"early"},
-  {en:"We can go there ___.",fa:"ما می‌توانیم بعداً به آنجا برویم.",pr:"وی کَن گو دِر لِیتِر",opts:["later","soon","now"],answer:"later"},
-  {en:"I will finish my work ___.",fa:"کارم را به زودی تمام می‌کنم.",pr:"آی ویل فینیش مای وُرک سُون",opts:["soon","later","never"],answer:"soon"},
-  {en:"I ___. drink coffee",fa:"من معمولاً قهوه می‌نوشم.",pr:"آی یووْژوالی دْرینک کافی",opts:["usually","always","sometimes"],answer:"usually"},
-  {en:"Please call me ___. the meeting",fa:"لطفاً بعد از جلسه با من تماس بگیر.",pr:"پلیز کال می اَفتِر دی میتینگ",opts:["after","before","now"],answer:"after"}
+  {en:"I go to my ___ after work.",fa:"من بعد از کار به خانه می‌روم.",pr:"آی گو تو مای هوم اَفتِر وُرک",opts:["home","house","office","school"],answer:"home"},
+  {en:"Please open the ___.",fa:"لطفاً در را باز کنید.",pr:"پلیز اوپن د دور",opts:["door","window","book","box"],answer:"door"},
+  {en:"This ___ is very clean.",fa:"این اتاق خیلی تمیز است.",pr:"دیس روم ایز وَری کلین",opts:["room","house","car","table"],answer:"room"},
+  {en:"The ___ is on the table.",fa:"چراغ روی میز است.",pr:"د لایت ایز آن د تیبل",opts:["light","lamp","book","phone"],answer:"light"},
+  {en:"My clothes are ___.",fa:"لباس‌های من کثیف هستند.",pr:"مای کلوز آر دِرتی",opts:["dirty","clean","new","old"],answer:"dirty"},
+  {en:"I live in a big ___.", fa:"من در یک خانه بزرگ زندگی می‌کنم.", pr:"آی لیو این ا بیگ هاوس", opts:["house","apartment","building"], answer:"house"},
 ];
 
 
 // جمله‌سازی
 const combine = [
 
-  {words:["yesterday","was","busy","I"],fa:"من دیروز شلوغ بودم.",pr:"آی واز بیزی یِستِردِی",answer:"i was busy yesterday"},
-  {words:["morning","every","run","I"],fa:"من هر صبح می‌دوم.",pr:"آی ران اِوری مورنینگ",answer:"i run every morning"},
-  {words:["night","study","at","I"],fa:"من شب درس می‌خوانم.",pr:"آی اِستادی اَت نایت",answer:"i study at night"},
-  {words:["never","smoke","I"],fa:"من هرگز سیگار نمی‌کشم.",pr:"آی نِوِر اِسمُوک",answer:"i never smoke"},
-  {words:["start","work","I","soon"],fa:"من به زودی کار را شروع می‌کنم.",pr:"آی اِستارت وُرک سُون",answer:"i start work soon"},
-  {words:["finish","book","I","night","at"],fa:"من کتاب را شب تمام می‌کنم.",pr:"آی فینیش دِ بوک اَت نایت",answer:"i finish the book at night"}
+  {words:["bedroom","sleep","I","my","in"],fa:"من در اتاق خوابم می‌خوابم.",pr:"آی اسلیپ این مای بدروم",answer:"i sleep in my bedroom"},
+  {words:["kitchen","mother","cooking","is","in","the"],fa:"مادر در آشپزخانه در حال آشپزی است.",pr:"مادِر ایز کوکینگ این د کیچن",answer:"mother is cooking in the kitchen"},
+  {words:["sofa","watching","on","TV","the","we","are"],fa:"ما روی مبل تلویزیون می‌بینیم.",pr:"وی آر واتچینگ تیوی آن د سوفا",answer:"we are watching tv on the sofa"},
+  {words:["in","apartment","lives","an","she"], fa:"او در یک آپارتمان زندگی می‌کند.", pr:"شی لیوز این آن اپارتمنت", answer:"she lives in an apartment"},
+  {words:["clean","bathroom","the","is"], fa:"حمام تمیز است.", pr:"د باثروم ایز کلین", answer:"the bathroom is clean"},
+  {words:["in","living","relax","the","room","we"], fa:"ما در اتاق نشیمن استراحت می‌کنیم.", pr:"وی ریلَکس این د لیوینگ روم", answer:"we relax in the living room"},
 ];
 
 // حدس‌زدن نوع ۱
 const guessMeaning = [
-  {q:"کدام کلمه معنی «حالا» است؟",opts:["now","late","soon"],fa:"حالا",pr:"ناو",answer:"now"},
-  {q:"کدام کلمه معنی «دیر» است؟",opts:["late","early","soon"],fa:"دیر",pr:"لِیت",answer:"late"},
-  {q:"کدام کلمه معنی «بعد از ظهر» است؟",opts:["afternoon","morning","evening"],fa:"بعد از ظهر",pr:"اَفتِرنون",answer:"afternoon"},
-  {q:"کدام کلمه معنی «عصر» است؟",opts:["evening","night","morning"],fa:"عصر",pr:"ایوْنینگ",answer:"evening"},
-  {q:"کدام کلمه معنی «همیشه» است؟",opts:["always","sometimes","never"],fa:"همیشه",pr:"اُلویز",answer:"always"},
-  {q:"کدام کلمه معنی «گاهی» است؟",opts:["sometimes","always","never"],fa:"گاهی",pr:"سامتایمز",answer:"sometimes"}
+  {q:"کدام کلمه معنی «دیوار» است؟",opts:["wall","ceiling","neighbor","building","rent"],fa:"دیوار",pr:"وال",answer:"wall"},
+  {q:"کدام کلمه معنی «سقف» است؟",opts:["wall","ceiling","neighbor","building","rent"],fa:"سقف",pr:"سیلینگ",answer:"ceiling"},
+  {q:"کدام کلمه معنی «همسایه» است؟",opts:["wall","ceiling","neighbor","building","rent"],fa:"همسایه",pr:"نِیبور",answer:"neighbor"},
+  {q:"کدام کلمه معنی «ساختمان» است؟",opts:["wall","ceiling","neighbor","building","rent"],fa:"ساختمان",pr:"بیلدینگ",answer:"building"},
+  {q:"کدام کلمه معنی «اجاره» است؟",opts:["wall","ceiling","neighbor","building","rent"],fa:"اجاره",pr:"رنت",answer:"rent"},
+  {q:"کدام کلمه معنی «قفل» است؟", opts:["lock","key","bolt"], fa:"قفل", pr:"لاک", answer:"lock"}
+
 ];
 
 
 // حدس‌زدن نوع ۲
 const guessWord = [
-  {q:"معنی «week» چیست؟",opts:["هفته","ماه","سال"],fa:"هفته",pr:"ویک",answer:"هفته"},
-  {q:"معنی «month» چیست؟",opts:["ماه","هفته","سال"],fa:"ماه",pr:"مَانث",answer:"ماه"},
-  {q:"معنی «year» چیست؟",opts:["سال","ماه","هفته"],fa:"سال",pr:"ییر",answer:"سال"},
-  {q:"معنی «hour» چیست؟",opts:["ساعت","دقیقه","روز"],fa:"ساعت",pr:"آوِر",answer:"ساعت"},
-  {q:"معنی «minute» چیست؟",opts:["دقیقه","ساعت","ثانیه"],fa:"دقیقه",pr:"مینیت",answer:"دقیقه"},
-  {q:"معنی «before» چیست؟",opts:["قبل","بعد","حین"],fa:"قبل",pr:"بیفور",answer:"قبل"}
+  {q:"معنی «window» چیست؟", opts:["پنجره","در","دیوار"], fa:"پنجره", pr:"ویندو", answer:"پنجره"},
+  {q:"معنی «floor» چیست؟", opts:["کف","سقف","زمین"], fa:"کف", pr:"فلور", answer:"کف"},
+  {q:"معنی «bed» چیست؟", opts:["تخت","صندلی","مبل"], fa:"تخت", pr:"بد", answer:"تخت"},
+  {q:"معنی «table» چیست؟", opts:["میز","صندلی","کمد"], fa:"میز", pr:"تیبل", answer:"میز"},
+  {q:"معنی «chair» چیست؟", opts:["صندلی","مبل","نیمکت"], fa:"صندلی", pr:"چیر", answer:"صندلی"},
+  {q:"معنی «key» چیست؟", opts:["کلید","قفل","دستگیره"], fa:"کلید", pr:"کی", answer:"کلید"}  
 ];
 // ترتیب نوع سؤال‌ها
 const sequence = ["diagnostic","combine","guessMeaning","guessWord"];
