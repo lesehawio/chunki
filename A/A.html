@@ -1,229 +1,452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ckb">
 <head>
 <meta charset="UTF-8">
-<title>English Starter Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چونکی ۱ - عربی عراقی (خێزان)</title>
 <link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
 
 <style>
-:root{
-  --bg:#0e1117;
-  --card:#161b26;
-  --text:#eee;
-  --accent:#91c300;
-  --accent2:#91c300;
-  --glass:rgba(255,255,255,0.08);
-  --border:rgba(255,255,255,0.15);
+/* ============================================================
+   🎨 ROOT VARIABLES
+   ============================================================ */
+:root {
+  --bg: #0a0e14;
+  --card: #121821;
+  --card2: #1a2330;
+  --text: #eef2f5;
+  --text-muted: #98a9b9;
+  --accent: #4caf50;
+  --accent2: #66bb6a;
+  --accent3: #2e7d32;
+  --glass: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --shadow: rgba(0,0,0,0.6);
+  --gradient: linear-gradient(135deg, #4caf50, #2e7d32);
+  --radius: 16px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.light{
-  --bg:#f2f2f7;
-  --card:#ffffff;
-  --text:#222;
-  --accent:#0077ff;
-  --accent2:#00bbff;
-  --glass:rgba(255,255,255,0.5);
-  --border:rgba(0,0,0,0.1);
+/* ============================================================
+   🌞 LIGHT THEME
+   ============================================================ */
+.light {
+  --bg: #e8f5e9;
+  --card: #ffffff;
+  --card2: #f1f8f2;
+  --text: #1a2a1a;
+  --text-muted: #3a5a3a;
+  --accent: #2e7d32;
+  --accent2: #43a047;
+  --accent3: #1b5e20;
+  --glass: rgba(0,0,0,0.04);
+  --border: rgba(0,0,0,0.08);
+  --shadow: rgba(0,0,0,0.1);
 }
 
-body{
-  margin:0;
-  font-family:Segoe UI, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  transition:.4s;
+/* ============================================================
+   🧱 BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{
-  width:390px;
-  background:var(--card);
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 0 40px rgba(0,0,0,.4);
-  position:relative;
-  overflow:hidden;
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background var(--transition), color var(--transition);
 }
 
-/* LOGO */
-.logo{
-  width:120px;
-  display:block;
-  margin:0 auto 10px;
-  animation:float 3s ease-in-out infinite;
-  cursor:pointer;
-}
-@keyframes float{
-  0%{ transform:translateY(0); }
-  50%{ transform:translateY(-8px); }
-  100%{ transform:translateY(0); }
+.container {
+  width: 420px;
+  max-width: 100%;
+  background: var(--card);
+  border-radius: 28px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.04);
+  position: relative;
+  transition: background var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--border);
 }
 
-/* THEME BUTTON */
-.theme-btn{
-  position:absolute;
-  top:12px;
-  right:12px;
-  font-size:22px;
-  cursor:pointer;
-  user-select:none;
+/* ============================================================
+   🖼️ LOGO
+   ============================================================ */
+.logo {
+  width: 110px;
+  display: block;
+  margin: 0 auto 14px;
+  animation: float 3.5s ease-in-out infinite;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 20px rgba(76, 175, 80, 0.15));
+  transition: filter var(--transition);
 }
 
-/* PROGRESS BAR */
-.progress-wrap{
-  width:100%;
-  height:10px;
-  background:#3335;
-  border-radius:10px;
-  overflow:hidden;
-  margin-bottom:15px;
-}
-.progress{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg, var(--accent), var(--accent2));
-  transition:.4s;
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
-/* TEXTS */
-h2{
-  text-align:center;
-  margin-bottom:8px;
-}
-.word{
-  text-align:center;
-  font-size:26px;
-  letter-spacing:3px;
-  margin:10px 0;
-  color:var(--accent);
-}
-.instruction{
-  text-align:center;
-  opacity:.8;
-}
-
-/* LETTERS */
-.answer-box{
-  min-height:50px;
-  border:2px dashed var(--border);
-  border-radius:12px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin:16px 0;
-  padding:10px;
-}
-.letters{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-}
-.letter{
-  background:#2d334a;
-  color:#fff;
-  padding:12px 16px;
-  border-radius:12px;
-  cursor:pointer;
-  user-select:none;
-  transition:.2s;
-  font-size:18px;
-}
-.light .letter{
-  background:#d0d4e4;
-  color:#000;
-}
-.letter:hover{
-  transform:scale(1.15) rotate(3deg);
+/* ============================================================
+   🌙 THEME TOGGLE
+   ============================================================ */
+.theme-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+  color: var(--text);
 }
 
-/* BUTTON */
-button{
-  width:100%;
-  margin-top:18px;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:var(--accent2);
-  color:#000;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.2s;
-}
-button:hover{
-  transform:scale(1.03);
+.theme-btn:hover {
+  transform: scale(1.08) rotate(12deg);
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
 }
 
-/* POPUP */
-.popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  animation:fade .3s;
-}
-@keyframes fade{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-.popup-content{
-  background:var(--glass);
-  backdrop-filter:blur(12px);
-  padding:22px;
-  border-radius:16px;
-  width:330px;
-  text-align:center;
-  border:1px solid var(--border);
-  animation:pop .35s ease;
-}
-@keyframes pop{
-  0%{ transform:scale(.6); opacity:0; }
-  100%{ transform:scale(1); opacity:1; }
+/* ============================================================
+   📊 PROGRESS BAR
+   ============================================================ */
+.progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 18px 0 16px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.correct{color:#00ff88;}
-.wrong{color:#ff7a00;}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient);
+  border-radius: 20px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
 
-/* MISTAKES */
-.mistakes-title{
-  font-size:18px;
-  font-weight:bold;
-  margin-top:20px;
-  margin-bottom:10px;
-  color:var(--accent);
-  text-align:center;
+/* ============================================================
+   📝 TYPOGRAPHY
+   ============================================================ */
+h2 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  color: var(--text);
 }
-.mistake-card{
-  background:var(--glass);
-  border:1px solid var(--border);
-  padding:12px;
-  border-radius:12px;
-  margin-bottom:12px;
-  backdrop-filter:blur(10px);
-  font-size:14px;
+
+.instruction {
+  text-align: center;
+  opacity: 0.75;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 4px;
+  color: var(--text-muted);
 }
-.mistake-card b{
-  color:var(--accent2);
-  font-size:16px;
+
+.instruction:first-of-type {
+  background: var(--glass);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border-left: 3px solid var(--accent2);
+  margin-bottom: 12px;
+  font-size: 15px;
+  opacity: 0.9;
+  color: var(--text);
 }
-.mistake-label{
-  font-weight:bold;
-  color:var(--accent);
+
+.word {
+  text-align: center;
+  font-size: 34px;
+  letter-spacing: 4px;
+  margin: 12px 0 6px;
+  color: var(--accent);
+  direction: rtl;
+  font-weight: 700;
+  text-shadow: 0 0 40px rgba(76, 175, 80, 0.08);
 }
-.mistake-user{
-  color:#ff7a00;
-  font-weight:bold;
+
+.translation {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+  direction: rtl;
+  font-weight: 400;
+}
+
+/* 📢 Pronunciation */
+.pr-box {
+  text-align: center;
+  font-size: 15px;
+  color: #ffb74d;
+  margin-bottom: 6px;
+  direction: rtl;
+  background: rgba(255, 183, 77, 0.10);
+  padding: 6px 16px;
+  border-radius: 30px;
+  display: inline-block;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 183, 77, 0.12);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.pr-center {
+  text-align: center;
+}
+
+/* ============================================================
+   🧩 ANSWER & LETTERS
+   ============================================================ */
+.answer-box {
+  min-height: 56px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 12px;
+  flex-wrap: wrap;
+  direction: rtl;
+  background: var(--glass);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.answer-box:focus-within {
+  border-color: var(--accent2);
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  direction: rtl;
+}
+
+.letter {
+  background: var(--card2);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  font-size: 22px;
+  font-weight: 600;
+  direction: rtl;
+  border: 1px solid var(--border);
+  min-width: 48px;
+  text-align: center;
+}
+
+.light .letter {
+  background: #e8f5e9;
+  color: #1a2a1a;
+  border-color: #c8e6c9;
+}
+
+.letter:hover {
+  transform: scale(1.10) rotate(2deg);
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
+  box-shadow: 0 6px 24px rgba(76, 175, 80, 0.25);
+}
+
+/* ============================================================
+   🔘 BUTTON
+   ============================================================ */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--gradient);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.15);
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.25);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ============================================================
+   🎉 POPUP
+   ============================================================ */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.popup-content {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px 24px;
+  width: 340px;
+  max-width: 92%;
+  text-align: center;
+  animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.7) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.popup-content h3 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.popup-content .detail {
+  font-size: 16px;
+  opacity: 0.8;
+  margin: 8px 0;
+  line-height: 1.8;
+}
+
+.popup-content .score {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent2);
+  margin: 12px 0 16px;
+}
+
+.popup-content button {
+  width: auto;
+  padding: 12px 36px;
+  margin-top: 0;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+/* ============================================================
+   ✅ CORRECT / ❌ WRONG
+   ============================================================ */
+.correct { color: #66bb6a; }
+.wrong   { color: #ef5350; }
+
+/* ============================================================
+   📋 MISTAKES
+   ============================================================ */
+.mistakes-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.mistake-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(8px);
+  font-size: 14px;
+  text-align: right;
+  transition: all var(--transition);
+}
+
+.mistake-card:hover {
+  border-color: var(--accent2);
+}
+
+.mistake-card b {
+  color: var(--accent2);
+  font-size: 17px;
+}
+
+.mistake-label {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.mistake-user {
+  color: #ef5350;
+  font-weight: 600;
+}
+
+/* ============================================================
+   📱 RESPONSIVE
+   ============================================================ */
+@media (max-width: 440px) {
+  .container {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .word {
+    font-size: 28px;
+  }
+  .letter {
+    font-size: 18px;
+    padding: 10px 14px;
+    min-width: 40px;
+  }
+  .popup-content {
+    padding: 20px 16px;
+  }
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -236,172 +459,170 @@ button:hover{
     <div class="progress" id="progressBar"></div>
   </div>
 
-  <h2 id="progress">Question 1 / 8</h2>
+  <h2 id="progress">پرسیار ١ / ١٤</h2>
 
-  <div class="instruction">Write this word:</div>
-  <div class="word" id="targetWord"></div>
+  <div class="instruction">هی فایله ارای یادگرتن وشیل خێزان وه عەرەوی عێراقی، ته پێویستە وشه گه بۊنه ، دواتر وه دەنگێ بەرز بخونه</div>
+  <div class="instruction">هی وشەیە بنووسە:</div>
+
+  <div class="translation" id="translation">🇮🇶 معنی: پدرم</div>
+  <div class="word" id="targetWord">أبوی</div>
+  <div class="pr-center"><span class="pr-box" id="prBox">📢 تەلەفوز: اَبوی</span></div>
 
   <div class="answer-box" id="answerBox"></div>
   <div class="letters" id="lettersBox"></div>
 
-  <button onclick="check()">Check</button>
+  <button onclick="check()">پشکنین / بررسی</button>
 </div>
 
 <div class="popup" id="popup">
   <div class="popup-content">
     <h3 id="result"></h3>
-    <p id="info"></p>
-    <p id="scoreInfo" style="font-weight:bold;"></p>
-    <button onclick="next()">I got it</button>
+    <div class="detail" id="info"></div>
+    <div class="score" id="scoreInfo">خاڵ: ٠</div>
+    <button onclick="next()">دواتر</button>
   </div>
 </div>
 
 <script>
-const data=[
- {w:"home", fa:"خانه", pr:"هُوم"},
- {w:"house", fa:"خانه (ویلا)", pr:"هاوس"},
- {w:"apartment", fa:"آپارتمان", pr:"اَپارتمِنت"},
- {w:"room", fa:"اتاق", pr:"روم"},
- {w:"bedroom", fa:"اتاق خواب", pr:"بِدروم"},
- {w:"bathroom", fa:"حمام", pr:"بَثروم"},
- {w:"kitchen", fa:"آشپزخانه", pr:"کیچِن"},
- {w:"living room", fa:"اتاق نشیمن", pr:"لیوینگ روم"},
- {w:"door", fa:"در", pr:"دور"},
- {w:"window", fa:"پنجره", pr:"ویندو"},
- {w:"wall", fa:"دیوار", pr:"وال"},
- {w:"floor", fa:"کف", pr:"فلور"},
- {w:"ceiling", fa:"سقف", pr:"سیلینگ"},
- {w:"bed", fa:"تخت", pr:"بِد"},
- {w:"table", fa:"میز", pr:"تِیبِل"},
- {w:"chair", fa:"صندلی", pr:"چِر"},
- {w:"sofa", fa:"مبل", pr:"سوفا"},
- {w:"light", fa:"نور", pr:"لایت"},
- {w:"lamp", fa:"چراغ", pr:"لمپ"},
- {w:"key", fa:"کلید", pr:"کی"},
- {w:"lock", fa:"قفل", pr:"لاک"},
- {w:"clean", fa:"تمیز", pr:"کلین"},
- {w:"dirty", fa:"کثیف", pr:"دیرتی"},
- {w:"rent", fa:"اجاره", pr:"رِنت"},
- {w:"neighbor", fa:"همسایه", pr:"نِیبور"},
- {w:"building", fa:"ساختمان", pr:"بیلدینگ"}
-
+// ============================================================
+// 📦 DATA
+// ============================================================
+const data = [
+  { w: "أبوی", ku: "باوگم", pr: "اَبوی" },
+  { w: "أمی", ku: "داڵگم", pr: "اَمی" },
+  { w: "أخوی", ku: "برام", pr: "اَخوی" },
+  { w: "ختی", ku: "خوه‌یشکم", pr: "خِتی" },
+  { w: "زوجتی", ku: "ژنم", pr: "زَوجتی" },
+  { w: "زوجی", ku: "شۊم", pr: "زَوجی" },
+  { w: "ولدی", ku: "کوڕم", pr: "وَلدی" },
+  { w: "بِنتی", ku: "دۊه‌تم", pr: "بِنتی" },
+  { w: "عمی", ku: "تاتگم", pr: "عَمی" },
+  { w: "خالی", ku: "خاڵوم", pr: "خالی" },
+  { w: "عمتی", ku: "میمگم", pr: "عَمتی" },
+  { w: "خالتی", ku: "میمگم", pr: "خالتی" },
+  { w: "جدّی", ku: "باپیرم", pr: "جَدّی" },
+  { w: "جدّتی", ku: "نه‌نگم", pr: "جَدّتی" }
 ];
 
-let i=0, score=0;
-let selected=[];
-let mistakes=[];
+let i = 0, score = 0;
+let selected = [];
+let mistakes = [];
 
-function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
+function shuffle(a) { return a.sort(() => Math.random() - 0.5); }
 
-function load(){
-  selected=[];
-  answerBox.innerHTML="";
-  lettersBox.innerHTML="";
-  progress.innerText=`Question ${i+1} / ${data.length}`;
-  targetWord.innerText=data[i].w;
+function load() {
+  selected = [];
+  document.getElementById("answerBox").innerHTML = "";
+  document.getElementById("lettersBox").innerHTML = "";
 
-  progressBar.style.width=((i)/data.length)*100+"%";
+  document.getElementById("progress").innerText = `پرسیار ${i+1} / ${data.length}`;
+  document.getElementById("targetWord").innerText = data[i].w;
+  document.getElementById("translation").innerHTML = `🇮🇶 ${data[i].ku}`;
+  document.getElementById("prBox").innerHTML = `📢 تەلەفوز: ${data[i].pr}`;
 
-  shuffle(data[i].w.split("")).forEach(l=>{
-    let d=document.createElement("div");
-    d.className="letter";
-    d.innerText=l;
-    d.onclick=()=>pick(d,l);
-    lettersBox.appendChild(d);
+  document.getElementById("progressBar").style.width = ((i) / data.length) * 100 + "%";
+
+  let letters = data[i].w.split("");
+  shuffle(letters);
+
+  letters.forEach(l => {
+    let d = document.createElement("div");
+    d.className = "letter";
+    d.innerText = l;
+    d.onclick = () => pick(d, l);
+    document.getElementById("lettersBox").appendChild(d);
   });
 }
 
-function pick(el,l){
-  el.style.display="none";
+function pick(el, l) {
+  el.style.display = "none";
   selected.push(l);
 
-  let d=document.createElement("div");
-  d.className="letter";
-  d.innerText=l;
-  d.onclick=()=>{
-    answerBox.removeChild(d);
+  let d = document.createElement("div");
+  d.className = "letter";
+  d.innerText = l;
+  d.onclick = () => {
+    document.getElementById("answerBox").removeChild(d);
     selected.pop();
-    el.style.display="block";
+    el.style.display = "block";
   };
-  answerBox.appendChild(d);
+  document.getElementById("answerBox").appendChild(d);
 }
 
-function check(){
-  let user=selected.join("");
-  popup.style.display="flex";
+function check() {
+  let user = selected.join("");
+  document.getElementById("popup").style.display = "flex";
 
-  if(user===data[i].w){
-    score+=2;
-    result.innerHTML="✅ Correct";
-    result.className="correct";
-  }else{
-    score-=1;
-    result.innerHTML="❌ Wrong";
-    result.className="wrong";
+  if (user === data[i].w) {
+    score += 2;
+    document.getElementById("result").innerHTML = "✅ درەسە !";
+    document.getElementById("result").className = "correct";
+  } else {
+    score -= 1;
+    document.getElementById("result").innerHTML = "❌ هەڵه!";
+    document.getElementById("result").className = "wrong";
 
     mistakes.push({
-      correct:data[i].w,
-      user:user || "(خالی)",
-      fa:data[i].fa,
-      pr:data[i].pr
+      correct: data[i].w,
+      user: user || "(خاڵی)",
+      ku: data[i].ku,
+      pr: data[i].pr
     });
   }
 
-  info.innerHTML=
-    `<b>${data[i].w}</b><br>
-     معنی: ${data[i].fa}<br>
-     تلفظ: ${data[i].pr}`;
+  document.getElementById("info").innerHTML =
+    `<b>${data[i].w}</b><br>کوردی: ${data[i].ku}<br>تەلەفوز: ${data[i].pr}`;
 
-  scoreInfo.innerHTML=`امتیاز فعلی: ${score}`;
+  document.getElementById("scoreInfo").innerHTML = `خاڵ: ${score}`;
 }
 
-function next(){
-  popup.style.display="none";
+function next() {
+  document.getElementById("popup").style.display = "none";
   i++;
-  if(i<data.length){
+  if (i < data.length) {
     load();
-  }else{
+  } else {
     showFinal();
   }
 }
 
-function showFinal(){
+function showFinal() {
   let html = `
-    <h2>Test Completed!</h2>
-    <p class="correct">امتیاز نهایی: ${score}</p>
+    <h2>🏁 تەواو بوو!</h2>
+    <p class="correct" style="font-size:22px;font-weight:700;">خاڵی کۆتای: ${score}</p>
   `;
 
-  if(mistakes.length > 0){
-    html += `<p class="wrong">تعداد خطاها: ${mistakes.length}</p>`;
-    html += `<div class="mistakes-title">لیست خطاهای شما</div>`;
+  if (mistakes.length > 0) {
+    html += `<p class="wrong" style="font-size:16px;">شماره ی هەڵەکان: ${mistakes.length}</p>`;
+    html += `<div class="mistakes-title">لیست هەڵەکان</div>`;
 
     mistakes.forEach((m, idx) => {
       html += `
         <div class="mistake-card">
           <b>${idx+1}) ${m.correct}</b>
-          <div><span class="mistake-label">جواب شما:</span> <span class="mistake-user">${m.user}</span></div>
-          <div><span class="mistake-label">معنی:</span> ${m.fa}</div>
-          <div><span class="mistake-label">تلفظ:</span> ${m.pr}</div>
+          <div><span class="mistake-label">جوواو ته:</span> <span class="mistake-user">${m.user}</span></div>
+          <div><span class="mistake-label">کوردی:</span> ${m.ku}</div>
+          <div><span class="mistake-label">تەلەفوز:</span> ${m.pr}</div>
         </div>
       `;
     });
 
   } else {
-    html += `<p class="correct">عالی! هیچ خطایی نداشتی 🎉</p>`;
+    html += `<p class="correct" style="font-size:20px;">🎉 زۆر باش! هۊچ هەڵەیە نه‌یو!</p>`;
   }
 
   document.querySelector(".container").innerHTML = html;
 }
 
 /* THEME SWITCH */
-let isLight=false;
-themeBtn.onclick=toggleTheme;
-logo.onclick=toggleTheme;
+let isLight = false;
+document.getElementById("themeBtn").onclick = toggleTheme;
+document.getElementById("logo").onclick = toggleTheme;
 
-function toggleTheme(){
-  isLight=!isLight;
-  document.body.className=isLight?"light":"";
-  themeBtn.innerText=isLight?"☀":"🌙";
+function toggleTheme() {
+  isLight = !isLight;
+  document.body.className = isLight ? "light" : "";
+  document.getElementById("themeBtn").innerText = isLight ? "☀" : "🌙";
 }
 
 /* START */
