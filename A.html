@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ckb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چونکی ۱ - عربی عراقی (خێزان)</title>
+<link rel="icon" type="image/png" href="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png">
+
+<style>
+/* ============================================================
+   🎨 ROOT VARIABLES
+   ============================================================ */
+:root {
+  --bg: #0a0e14;
+  --card: #121821;
+  --card2: #1a2330;
+  --text: #eef2f5;
+  --text-muted: #98a9b9;
+  --accent: #4caf50;
+  --accent2: #66bb6a;
+  --accent3: #2e7d32;
+  --glass: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --shadow: rgba(0,0,0,0.6);
+  --gradient: linear-gradient(135deg, #4caf50, #2e7d32);
+  --radius: 16px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   🌞 LIGHT THEME
+   ============================================================ */
+.light {
+  --bg: #e8f5e9;
+  --card: #ffffff;
+  --card2: #f1f8f2;
+  --text: #1a2a1a;
+  --text-muted: #3a5a3a;
+  --accent: #2e7d32;
+  --accent2: #43a047;
+  --accent3: #1b5e20;
+  --glass: rgba(0,0,0,0.04);
+  --border: rgba(0,0,0,0.08);
+  --shadow: rgba(0,0,0,0.1);
+}
+
+/* ============================================================
+   🧱 BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.container {
+  width: 420px;
+  max-width: 100%;
+  background: var(--card);
+  border-radius: 28px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.04);
+  position: relative;
+  transition: background var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   🖼️ LOGO
+   ============================================================ */
+.logo {
+  width: 110px;
+  display: block;
+  margin: 0 auto 14px;
+  animation: float 3.5s ease-in-out infinite;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 20px rgba(76, 175, 80, 0.15));
+  transition: filter var(--transition);
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ============================================================
+   🌙 THEME TOGGLE
+   ============================================================ */
+.theme-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+}
+
+.theme-btn:hover {
+  transform: scale(1.08) rotate(12deg);
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
+}
+
+/* ============================================================
+   📊 PROGRESS BAR
+   ============================================================ */
+.progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 18px 0 16px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient);
+  border-radius: 20px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+/* ============================================================
+   📝 TYPOGRAPHY
+   ============================================================ */
+h2 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.instruction {
+  text-align: center;
+  opacity: 0.75;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.instruction:first-of-type {
+  background: var(--glass);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border-left: 3px solid var(--accent2);
+  margin-bottom: 12px;
+  font-size: 15px;
+  opacity: 0.9;
+  color: var(--text);
+}
+
+.word {
+  text-align: center;
+  font-size: 34px;
+  letter-spacing: 4px;
+  margin: 12px 0 6px;
+  color: var(--accent);
+  direction: rtl;
+  font-weight: 700;
+  text-shadow: 0 0 40px rgba(76, 175, 80, 0.08);
+}
+
+.translation {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+  direction: rtl;
+  font-weight: 400;
+}
+
+/* 📢 Pronunciation - به کُردی فیلی */
+.pr-box {
+  text-align: center;
+  font-size: 16px;
+  color: #ffb74d;
+  margin-bottom: 6px;
+  direction: rtl;
+  background: rgba(255, 183, 77, 0.10);
+  padding: 8px 18px;
+  border-radius: 30px;
+  display: inline-block;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 183, 77, 0.15);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+}
+
+.pr-box .pr-detail {
+  font-size: 14px;
+  color: #ffcc80;
+  font-weight: 400;
+  display: block;
+  margin-top: 2px;
+}
+
+.pr-center {
+  text-align: center;
+}
+
+/* ============================================================
+   🧩 ANSWER & LETTERS
+   ============================================================ */
+.answer-box {
+  min-height: 56px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 12px;
+  flex-wrap: wrap;
+  direction: rtl;
+  background: var(--glass);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.answer-box:focus-within {
+  border-color: var(--accent2);
+}
+
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  direction: rtl;
+}
+
+.letter {
+  background: var(--card2);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  font-size: 22px;
+  font-weight: 600;
+  direction: rtl;
+  border: 1px solid var(--border);
+  min-width: 48px;
+  text-align: center;
+}
+
+.light .letter {
+  background: #e8f5e9;
+  color: #1a2a1a;
+  border-color: #c8e6c9;
+}
+
+.letter:hover {
+  transform: scale(1.10) rotate(2deg);
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
+  box-shadow: 0 6px 24px rgba(76, 175, 80, 0.25);
+}
+
+/* ============================================================
+   🔘 BUTTON
+   ============================================================ */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--gradient);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.15);
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.25);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ============================================================
+   🎉 POPUP
+   ============================================================ */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.popup-content {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px 24px;
+  width: 340px;
+  max-width: 92%;
+  text-align: center;
+  animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.7) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.popup-content h3 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.popup-content .detail {
+  font-size: 16px;
+  opacity: 0.8;
+  margin: 8px 0;
+  line-height: 1.8;
+}
+
+.popup-content .score {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent2);
+  margin: 12px 0 16px;
+}
+
+.popup-content button {
+  width: auto;
+  padding: 12px 36px;
+  margin-top: 0;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+/* ============================================================
+   ✅ CORRECT / ❌ WRONG
+   ============================================================ */
+.correct { color: #66bb6a; }
+.wrong   { color: #ef5350; }
+
+/* ============================================================
+   📋 MISTAKES
+   ============================================================ */
+.mistakes-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.mistake-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(8px);
+  font-size: 14px;
+  text-align: right;
+  transition: all var(--transition);
+}
+
+.mistake-card:hover {
+  border-color: var(--accent2);
+}
+
+.mistake-card b {
+  color: var(--accent2);
+  font-size: 17px;
+}
+
+.mistake-label {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.mistake-user {
+  color: #ef5350;
+  font-weight: 600;
+}
+
+/* ============================================================
+   📱 RESPONSIVE
+   ============================================================ */
+@media (max-width: 440px) {
+  .container {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  .word {
+    font-size: 28px;
+  }
+  .letter {
+    font-size: 18px;
+    padding: 10px 14px;
+    min-width: 40px;
+  }
+  .popup-content {
+    padding: 20px 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <img src="https://uploadkon.ir/uploads/855814_261000016643-removebg-preview.png" class="logo" id="logo">
+
+  <div class="theme-btn" id="themeBtn">🌙</div>
+
+  <div class="progress-wrap">
+    <div class="progress" id="progressBar"></div>
+  </div>
+
+  <h2 id="progress">پرسیار ١ / ١٤</h2>
+
+  <div class="instruction">هی فایله ارای یادگرتن وشیل خێزان وه عەرەوی عێراقی، ته پێویستە وشه گه بۊنه ، دواتر وه دەنگێ بەرز بخونه</div>
+  <div class="instruction">هی وشەیە بنووسە:</div>
+
+  <div class="translation" id="translation">🇮🇶 باوگم</div>
+  <div class="word" id="targetWord">أبوی</div>
+  <div class="pr-center">
+    <span class="pr-box" id="prBox">
+      📢 تەلەفوز: اَبوی
+      <span class="pr-detail">(اَ - بوی • "اَ" وەک اَبر، "بوی" وەک بوی گوڵ)</span>
+    </span>
+  </div>
+
+  <div class="answer-box" id="answerBox"></div>
+  <div class="letters" id="lettersBox"></div>
+
+  <button onclick="check()">پشکنین</button>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="result"></h3>
+    <div class="detail" id="info"></div>
+    <div class="score" id="scoreInfo">خاڵ: ٠</div>
+    <button onclick="next()">دواتر</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 📦 DATA - تلفظ کامل به کُردی فیلی
+// ============================================================
+const data = [
+  { 
+    w: "أبوی", 
+    ku: "باوگم", 
+    pr: "اَبوی",
+    prDetail: "(اَ - بوی • 'اَ' جۊره اَبر، 'بوی' جۊره بوی گوڵ)"
+  },
+  { 
+    w: "أمی", 
+    ku: "داڵگم", 
+    pr: "اَمی",
+    prDetail: "(اَ - می • 'اَ' جۊره اَبر، 'می' جۊره میوە)"
+  },
+  { 
+    w: "أخوی", 
+    ku: "برام", 
+    pr: "اَخوی",
+    prDetail: "(اَ - خوی • 'خوی' جۊره خوی (خووی خۆت) نەک خیشتن)"
+  },
+  { 
+    w: "ختی", 
+    ku: "خوه‌یشکم", 
+    pr: "خِتی",
+    prDetail: "(خِ - تی • 'خِ' جۊره خِش، 'تی' جۊره تیژ)"
+  },
+  { 
+    w: "زوجتی", 
+    ku: "ژنم", 
+    pr: "زَوجتی",
+    prDetail: "(زَ - وج - تی • 'زَ' جۊره زَرد، 'وج' جۊره وجدان)"
+  },
+  { 
+    w: "زوجی", 
+    ku: "شۊم", 
+    pr: "زَوجی",
+    prDetail: "(زَ - وجی • 'جی' جۊره جیب)"
+  },
+  { 
+    w: "ولدی", 
+    ku: "کوڕم", 
+    pr: "وَلدی",
+    prDetail: "(وَ - لدی • 'وَ' جۊره وَرزش، 'لدی' جۊره لە)"
+  },
+  { 
+    w: "بِنتی", 
+    ku: "دۊه‌تم", 
+    pr: "بِنتی",
+    prDetail: "(بِن - تی • 'بِن' جۊره بِنزین، 'تی' جۊره تیژ)"
+  },
+  { 
+    w: "عمی", 
+    ku: "تاتگم", 
+    pr: "عَمی",
+    prDetail: "(عَ - می • 'عَ' جۊره عَسل، 'می' جۊره میوە)"
+  },
+  { 
+    w: "خالی", 
+    ku: "خاڵوم", 
+    pr: "خالی",
+    prDetail: "(خا - لی • 'خا' جۊره خار، 'لی' جۊره لیمو)"
+  },
+  { 
+    w: "عمتی", 
+    ku: "میمگم", 
+    pr: "عَمتی",
+    prDetail: "(عَم - تی • 'عَم' جۊره عَمەل، 'تی' جۊره تیژ)"
+  },
+  { 
+    w: "خالتی", 
+    ku: "میمگم", 
+    pr: "خالتی",
+    prDetail: "(خا - تی • 'خا' جۊره خار، 'تی' جۊره تیژ)"
+  },
+  { 
+    w: "جدّی", 
+    ku: "باپیرم", 
+    pr: "جَدّی",
+    prDetail: "(جَد - دی • 'جَد' جۊره جَد، 'دی' جۊره دیدار)"
+  },
+  { 
+    w: "جدّتی", 
+    ku: "نه‌نگم", 
+    pr: "جَدّتی",
+    prDetail: "(جَد - تی • 'جَد' جۊره جَد، 'تی' جۊره تیژ)"
+  }
+];
+
+let i = 0, score = 0;
+let selected = [];
+let mistakes = [];
+
+function shuffle(a) { return a.sort(() => Math.random() - 0.5); }
+
+function load() {
+  selected = [];
+  document.getElementById("answerBox").innerHTML = "";
+  document.getElementById("lettersBox").innerHTML = "";
+
+  document.getElementById("progress").innerText = `پرسیار ${i+1} / ${data.length}`;
+  document.getElementById("targetWord").innerText = data[i].w;
+  document.getElementById("translation").innerHTML = `🇮🇶 ${data[i].ku}`;
+  
+  document.getElementById("prBox").innerHTML = `
+    📢 تەلەفوز: ${data[i].pr}
+    <span class="pr-detail">${data[i].prDetail}</span>
+  `;
+
+  document.getElementById("progressBar").style.width = ((i) / data.length) * 100 + "%";
+
+  let letters = data[i].w.split("");
+  shuffle(letters);
+
+  letters.forEach(l => {
+    let d = document.createElement("div");
+    d.className = "letter";
+    d.innerText = l;
+    d.onclick = () => pick(d, l);
+    document.getElementById("lettersBox").appendChild(d);
+  });
+}
+
+function pick(el, l) {
+  el.style.display = "none";
+  selected.push(l);
+
+  let d = document.createElement("div");
+  d.className = "letter";
+  d.innerText = l;
+  d.onclick = () => {
+    document.getElementById("answerBox").removeChild(d);
+    selected.pop();
+    el.style.display = "block";
+  };
+  document.getElementById("answerBox").appendChild(d);
+}
+
+function check() {
+  let user = selected.join("");
+  document.getElementById("popup").style.display = "flex";
+
+  if (user === data[i].w) {
+    score += 2;
+    document.getElementById("result").innerHTML = "✅ درەسە!";
+    document.getElementById("result").className = "correct";
+  } else {
+    score -= 1;
+    document.getElementById("result").innerHTML = "❌ هەڵە!";
+    document.getElementById("result").className = "wrong";
+
+    mistakes.push({
+      correct: data[i].w,
+      user: user || "(خاڵی)",
+      ku: data[i].ku,
+      pr: data[i].pr
+    });
+  }
+
+  document.getElementById("info").innerHTML =
+    `<b>${data[i].w}</b><br>کوردی: ${data[i].ku}<br>تەلەفوز: ${data[i].pr}`;
+
+  document.getElementById("scoreInfo").innerHTML = `خاڵ: ${score}`;
+}
+
+function next() {
+  document.getElementById("popup").style.display = "none";
+  i++;
+  if (i < data.length) {
+    load();
+  } else {
+    showFinal();
+  }
+}
+
+function showFinal() {
+  let html = `
+    <h2>🏁 تەواو بوو!</h2>
+    <p class="correct" style="font-size:22px;font-weight:700;">خاڵی کۆتای: ${score}</p>
+  `;
+
+  if (mistakes.length > 0) {
+    html += `<p class="wrong" style="font-size:16px;">ژمارەی هەڵەکان: ${mistakes.length}</p>`;
+    html += `<div class="mistakes-title">لیست هەڵەکان</div>`;
+
+    mistakes.forEach((m, idx) => {
+      html += `
+        <div class="mistake-card">
+          <b>${idx+1}) ${m.correct}</b>
+          <div><span class="mistake-label">جوواوە تۆ:</span> <span class="mistake-user">${m.user}</span></div>
+          <div><span class="mistake-label">کوردی:</span> ${m.ku}</div>
+          <div><span class="mistake-label">تەلەفوز:</span> ${m.pr}</div>
+        </div>
+      `;
+    });
+
+  } else {
+    html += `<p class="correct" style="font-size:20px;">🎉 زۆر باش! هۊچ هەڵەیەک نه‌یە!</p>`;
+  }
+
+  document.querySelector(".container").innerHTML = html;
+}
+
+/* THEME SWITCH */
+let isLight = false;
+document.getElementById("themeBtn").onclick = toggleTheme;
+document.getElementById("logo").onclick = toggleTheme;
+
+function toggleTheme() {
+  isLight = !isLight;
+  document.body.className = isLight ? "light" : "";
+  document.getElementById("themeBtn").innerText = isLight ? "☀" : "🌙";
+}
+
+/* START */
+load();
+</script>
+
+</body>
+</html>
